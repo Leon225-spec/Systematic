@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -18,18 +18,23 @@
                     },
                     colors: {
                         brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            600: '#0066ff', // Practical UI Primary Blue
-                            700: '#0052cc',
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            600: '#2563eb', // Slightly more vibrant royal blue
+                            700: '#1d4ed8',
                         },
-                        neutral: {
-                            950: '#0a0a0a',
+                        slate: {
+                            850: '#151f32', // Deep slate for contrast
+                            900: '#0f172a',
                         }
                     },
                     boxShadow: {
                         'p-ui': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
+                        // Keeping your shadows as requested
                         'p-card': '0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05), 0 12px 24px rgba(0, 0, 0, 0.05)',
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)",
                     }
                 }
             }
@@ -40,21 +45,28 @@
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            color: #171717; /* High contrast neutral */
         }
 
-        /* Practical UI specific heading tracking */
+        /* Practical UI Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, #f1f5f9 1px, transparent 1px),
+                              linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+
         h1, h2, h3 {
-            letter-spacing: -0.03em;
+            letter-spacing: -0.025em; /* Slightly tighter, precise tracking */
         }
 
         .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
-        /* Subtle Inner Shadow for the "Practical" look */
+        /* Subtle Inner Shadow for icons */
         .inner-ring {
             box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
         }
@@ -69,7 +81,7 @@
         .faq-item input:checked ~ .faq-content {
             max-height: 200px;
             opacity: 1;
-            padding-bottom: 1.25rem;
+            padding-bottom: 1.5rem;
         }
         
         .faq-item input:checked ~ .faq-header svg {
@@ -77,27 +89,31 @@
         }
     </style>
 </head>
-<body class="bg-[#fafafa]">
+<body class="bg-white text-slate-900 relative">
+
+    <!-- Grid Background Layer -->
+    <div class="absolute inset-0 bg-grid z-0 pointer-events-none h-[120vh]"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav border-b border-neutral-200/60">
-        <div class="flex items-center justify-between px-6 py-3.5 max-w-7xl mx-auto">
-            <div class="flex items-center gap-2.5">
-                <div class="w-7 h-7 bg-brand-600 rounded-[6px] flex items-center justify-center text-white font-bold text-sm">
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-100">
+        <div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-sm">
                     D
                 </div>
-                <span class="text-[15px] font-bold tracking-tight text-neutral-950">DevSystem</span>
+                <span class="text-[18px] font-bold tracking-tight text-slate-900">DevSystem</span>
             </div>
             
-            <div class="hidden md:flex items-center space-x-7 text-[13px] font-medium text-neutral-500">
-                <a href="#" class="hover:text-neutral-900 transition-colors">Capabilities</a>
-                <a href="#" class="hover:text-neutral-900 transition-colors">Process</a>
-                <a href="#" class="hover:text-neutral-900 transition-colors">Enterprise</a>
+            <div class="hidden md:flex items-center space-x-8 text-[15px] font-medium text-slate-500">
+                <a href="#" class="hover:text-brand-600 transition-colors">Capabilities</a>
+                <a href="#" class="hover:text-brand-600 transition-colors">Process</a>
+                <a href="#" class="hover:text-brand-600 transition-colors">Enterprise</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="#" class="hidden md:block text-[13px] font-medium text-neutral-600 hover:text-neutral-900">Log in</a>
-                <a href="#" class="px-4 py-2 bg-neutral-950 text-white text-[13px] font-semibold rounded-full hover:bg-neutral-800 transition-all shadow-sm">
+                <a href="#" class="hidden md:block text-[15px] font-medium text-slate-600 hover:text-slate-900">Log in</a>
+                <!-- Updated Button: Rounded-xl instead of full to match Practical UI -->
+                <a href="#" class="px-5 py-2.5 bg-brand-600 text-white text-[15px] font-semibold rounded-xl hover:bg-brand-700 transition-all shadow-sm ring-1 ring-inset ring-brand-700/10">
                     Start Project
                 </a>
             </div>
@@ -105,73 +121,77 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative px-6 pt-40 pb-24 max-w-7xl mx-auto">
+    <header class="relative px-6 pt-44 pb-32 max-w-7xl mx-auto z-10">
         <div class="max-w-3xl">
             <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-brand-50 border border-brand-100 mb-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-50 border border-brand-100 mb-8">
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-600"></span>
                 </span>
-                <span class="text-[11px] font-bold text-brand-700 uppercase tracking-wider">Infrastructure v2.4</span>
+                <span class="text-[13px] font-bold text-brand-700 tracking-wide">Infrastructure v2.4</span>
             </div>
             
-            <h1 class="text-6xl md:text-7xl font-extrabold text-neutral-950 mb-8 leading-[0.95]">
+            <!-- Heading: Practical UI uses slightly less weight than ExtraBold (800) usually, more like Bold (700) but bigger -->
+            <h1 class="text-6xl md:text-[5rem] font-bold text-slate-900 mb-8 leading-[1.05] tracking-tight">
                 Systems that scale <br>
-                <span class="text-neutral-400">without the friction.</span>
+                <span class="text-slate-400">without the friction.</span>
             </h1>
             
-            <p class="text-xl text-neutral-500 font-medium leading-relaxed mb-10 max-w-xl">
+            <p class="text-[1.25rem] text-slate-500 font-medium leading-relaxed mb-10 max-w-xl">
                 We design and engineer high-performance software infrastructure for companies that require absolute reliability.
             </p>
             
             <div class="flex flex-wrap gap-4">
-                <button class="px-7 py-3.5 bg-brand-600 text-white font-bold text-[15px] rounded-full hover:bg-brand-700 transition-all shadow-lg shadow-brand-600/10">
-                    Get Started
+                <!-- Buttons updated to match Practical UI (Rounded-xl) -->
+                <button class="px-8 py-4 bg-brand-600 text-white font-bold text-[17px] rounded-xl hover:bg-brand-700 transition-all shadow-lg shadow-brand-600/20">
+                    View pricing
                 </button>
-                <button class="px-7 py-3.5 bg-white border border-neutral-200 text-neutral-900 font-bold text-[15px] rounded-full hover:bg-neutral-50 transition-all shadow-sm">
-                    View Systems
+                <button class="px-8 py-4 bg-white border border-slate-200 text-slate-700 font-bold text-[17px] rounded-xl hover:bg-slate-50 hover:text-brand-600 hover:border-brand-200 transition-all shadow-sm">
+                    Free preview
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Capabilities -->
-    <section class="px-6 py-24 bg-white border-y border-neutral-200/60">
+    <section class="relative z-10 px-6 py-32 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-16">
-                <h2 class="text-3xl font-extrabold text-neutral-950 mb-4">Core Infrastructure</h2>
-                <p class="text-neutral-500 text-lg font-medium">Purpose-built software architecture for enterprise scale.</p>
+            <div class="mb-20 max-w-2xl">
+                <h2 class="text-4xl font-bold text-slate-900 mb-6">Core Infrastructure</h2>
+                <p class="text-slate-500 text-xl leading-relaxed">Purpose-built software architecture for enterprise scale. We focus on the details that others miss.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Practical UI Style Card -->
-                <div class="p-8 rounded-[24px] bg-white border border-neutral-200/80 shadow-p-card transition-transform hover:-translate-y-1 duration-300">
-                    <div class="w-11 h-11 bg-neutral-50 rounded-xl flex items-center justify-center mb-6 inner-ring">
-                        <svg class="w-5 h-5 text-neutral-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <!-- Card 1 -->
+                <div class="p-10 rounded-[2rem] bg-white border border-slate-100 shadow-p-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 inner-ring text-slate-700">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-950 mb-3">API Performance</h3>
-                    <p class="text-[15px] text-neutral-500 font-medium leading-relaxed">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">API Performance</h3>
+                    <p class="text-[17px] text-slate-500 font-normal leading-relaxed">
                         Sub-100ms latency at scale. We optimize the entire request lifecycle from DNS to database.
                     </p>
                 </div>
 
-                <div class="p-8 rounded-[24px] bg-white border border-neutral-200/80 shadow-p-card transition-transform hover:-translate-y-1 duration-300">
-                    <div class="w-11 h-11 bg-neutral-50 rounded-xl flex items-center justify-center mb-6 inner-ring">
-                        <svg class="w-5 h-5 text-neutral-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                <!-- Card 2 -->
+                <div class="p-10 rounded-[2rem] bg-white border border-slate-100 shadow-p-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 inner-ring text-slate-700">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-950 mb-3">Security Audits</h3>
-                    <p class="text-[15px] text-neutral-500 font-medium leading-relaxed">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Security Audits</h3>
+                    <p class="text-[17px] text-slate-500 font-normal leading-relaxed">
                         Comprehensive vulnerability assessments and hardening to meet SOC2 and HIPAA standards.
                     </p>
                 </div>
 
-                <div class="p-8 rounded-[24px] bg-white border border-neutral-200/80 shadow-p-card transition-transform hover:-translate-y-1 duration-300">
-                    <div class="w-11 h-11 bg-neutral-50 rounded-xl flex items-center justify-center mb-6 inner-ring">
-                        <svg class="w-5 h-5 text-neutral-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                <!-- Card 3 -->
+                <div class="p-10 rounded-[2rem] bg-white border border-slate-100 shadow-p-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 inner-ring text-slate-700">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-950 mb-3">Data Architectures</h3>
-                    <p class="text-[15px] text-neutral-500 font-medium leading-relaxed">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Data Architectures</h3>
+                    <p class="text-[17px] text-slate-500 font-normal leading-relaxed">
                         Relational and NoSQL designs that handle millions of operations while maintaining integrity.
                     </p>
                 </div>
@@ -180,30 +200,30 @@
     </section>
 
     <!-- FAQ -->
-    <section class="px-6 py-24 bg-[#fafafa]">
-        <div class="max-w-2xl mx-auto">
-            <h2 class="text-3xl font-extrabold text-neutral-950 mb-12 text-center">Frequently Asked</h2>
+    <section class="relative z-10 px-6 py-32 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Frequently Asked</h2>
             
-            <div class="space-y-3">
-                <div class="faq-item bg-white border border-neutral-200 rounded-2xl shadow-sm">
+            <div class="space-y-4">
+                <div class="faq-item bg-white border border-slate-200/60 rounded-2xl shadow-sm hover:border-brand-200 transition-colors">
                     <input type="checkbox" id="faq-1" class="hidden">
                     <label for="faq-1" class="faq-header flex items-center justify-between p-6 cursor-pointer select-none">
-                        <span class="text-[15px] font-bold text-neutral-900">What is your typical project timeline?</span>
-                        <svg class="w-4 h-4 text-neutral-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="text-[17px] font-semibold text-slate-900">What is your typical project timeline?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </label>
                     <div class="faq-content px-6">
-                        <p class="text-[14px] text-neutral-500 font-medium">Most infrastructure projects range from 8 to 14 weeks depending on complexity and legacy migration needs.</p>
+                        <p class="text-[16px] text-slate-500 leading-relaxed">Most infrastructure projects range from 8 to 14 weeks depending on complexity and legacy migration needs. We start with a 2-week discovery phase.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white border border-neutral-200 rounded-2xl shadow-sm">
+                <div class="faq-item bg-white border border-slate-200/60 rounded-2xl shadow-sm hover:border-brand-200 transition-colors">
                     <input type="checkbox" id="faq-2" class="hidden">
                     <label for="faq-2" class="faq-header flex items-center justify-between p-6 cursor-pointer select-none">
-                        <span class="text-[15px] font-bold text-neutral-900">Do you offer post-launch support?</span>
-                        <svg class="w-4 h-4 text-neutral-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="text-[17px] font-semibold text-slate-900">Do you offer post-launch support?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </label>
                     <div class="faq-content px-6">
-                        <p class="text-[14px] text-neutral-500 font-medium">Yes, we provide tiered maintenance packages covering security updates, performance tuning, and 24/7 monitoring.</p>
+                        <p class="text-[16px] text-slate-500 leading-relaxed">Yes, we provide tiered maintenance packages covering security updates, performance tuning, and 24/7 monitoring. We can also train your internal team.</p>
                     </div>
                 </div>
             </div>
@@ -211,18 +231,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="px-6 py-12 border-t border-neutral-200/60 bg-white">
+    <footer class="px-6 py-16 border-t border-slate-200 bg-white relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2.5">
-                <div class="w-6 h-6 bg-neutral-950 rounded-md flex items-center justify-center text-white font-bold text-[10px]">
+            <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-slate-900 rounded-lg flex items-center justify-center text-white font-bold text-[10px]">
                     D
                 </div>
-                <span class="text-[13px] font-bold tracking-tight text-neutral-950">DevSystem &copy; 2024</span>
+                <span class="text-[14px] font-semibold text-slate-900">DevSystem &copy; 2024</span>
             </div>
-            <div class="flex gap-8 text-[13px] font-medium text-neutral-500">
-                <a href="#" class="hover:text-neutral-950 transition-colors">Privacy</a>
-                <a href="#" class="hover:text-neutral-950 transition-colors">Terms</a>
-                <a href="#" class="hover:text-neutral-950 transition-colors">Twitter</a>
+            <div class="flex gap-8 text-[14px] font-medium text-slate-500">
+                <a href="#" class="hover:text-brand-600 transition-colors">Privacy</a>
+                <a href="#" class="hover:text-brand-600 transition-colors">Terms</a>
+                <a href="#" class="hover:text-brand-600 transition-colors">Twitter</a>
             </div>
         </div>
     </footer>
