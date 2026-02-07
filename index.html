@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -29,8 +29,11 @@
                     boxShadow: {
                         'surface': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
                         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-                        'float': '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)',
+                        'float': '0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04)', // Deeper shadow
                         'glow': '0 0 0 4px rgba(37, 99, 235, 0.15)',
+                    },
+                    backgroundImage: {
+                        'grid-slate': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23f1f5f9'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
                     }
                 }
             }
@@ -74,205 +77,219 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
         }
-
-        /* Custom Focus Ring for Inputs */
-        .input-focus:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
-        }
     </style>
 </head>
-<body class="bg-white text-slate-900 selection:bg-brand-100 selection:text-brand-900">
+<body class="bg-white text-slate-900 selection:bg-brand-100 selection:text-brand-900 relative">
+
+    <!-- Technical Grid Background -->
+    <div class="fixed inset-0 bg-grid-slate pointer-events-none z-0 opacity-[0.6]"></div>
+    
+    <!-- Top Gradient Fade for Nav -->
+    <div class="fixed top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent pointer-events-none z-10"></div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
         <div class="flex items-center justify-between px-6 py-4 md:px-12 max-w-7xl mx-auto">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
+            <div class="flex items-center gap-3">
+                <!-- Logo Mark -->
+                <div class="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/30 text-white font-bold text-lg">
+                    D
                 </div>
                 <span class="text-lg font-bold tracking-tight text-slate-900">DevSystem</span>
             </div>
             
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-500">
+            <div class="hidden md:flex items-center space-x-10 text-sm font-semibold text-slate-500">
                 <a href="#" class="hover:text-brand-600 transition-colors">Capabilities</a>
                 <a href="#" class="hover:text-brand-600 transition-colors">Process</a>
                 <a href="#" class="hover:text-brand-600 transition-colors">Enterprise</a>
             </div>
 
-            <a href="#contact" class="hidden sm:inline-flex px-5 py-2.5 bg-brand-600 text-white text-sm font-medium rounded-lg hover:bg-brand-700 transition-all shadow-sm hover:shadow-md focus:ring-4 focus:ring-brand-500/20">
-                Start Project
-            </a>
+            <div class="flex items-center gap-4">
+                 <a href="#login" class="hidden md:block text-sm font-semibold text-slate-600 hover:text-slate-900">Log in</a>
+                <a href="#contact" class="hidden sm:inline-flex px-5 py-2.5 bg-brand-600 text-white text-sm font-bold rounded-lg hover:bg-brand-700 transition-all shadow-sm hover:shadow-md focus:ring-4 focus:ring-brand-500/20">
+                    Start Project
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section (Level 0 Surface) -->
-    <header class="px-6 pt-32 pb-24 md:px-12 md:pt-40 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <!-- Hero Section -->
+    <header class="relative z-10 px-6 pt-32 pb-24 md:px-12 md:pt-44 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
             <!-- Left Content -->
-            <div class="max-w-2xl relative z-10">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-xs font-semibold uppercase tracking-wide mb-8">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+            <div class="max-w-2xl">
+                <!-- Eyebrow Text (Upgraded typography) -->
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest bg-brand-50 text-brand-600 border border-brand-100">
+                        v2.0
                     </span>
-                    System Architecture v2.0
+                    <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">System Architecture</span>
                 </div>
                 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-slate-900 mb-6 leading-[1.05]">
                     Build systems, <br>
-                    <span class="text-slate-400">not just websites.</span>
+                    <span class="text-slate-300 decoration-slate-200 decoration-4">not just websites.</span>
                 </h1>
                 
-                <p class="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg font-normal">
-                    We engineer high-performance software infrastructure for companies that have outgrown "good enough." Scalable, secure, and obsessively precise.
+                <p class="text-lg md:text-xl text-slate-500 font-medium leading-relaxed mb-10 max-w-lg">
+                    We engineer high-performance software infrastructure for companies that have outgrown "good enough."
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button class="px-8 py-3.5 bg-brand-600 text-white font-medium rounded-xl hover:bg-brand-700 transition-all shadow-lg shadow-brand-600/20 hover:-translate-y-0.5">
+                <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                    <button class="px-8 py-4 bg-brand-600 text-white font-bold text-sm rounded-xl hover:bg-brand-700 transition-all shadow-xl shadow-brand-600/20 hover:-translate-y-1">
                         View Case Studies
                     </button>
-                    <a href="#contact" class="px-8 py-3.5 bg-white border border-slate-200 text-slate-600 font-medium rounded-xl hover:border-brand-200 hover:text-brand-600 hover:bg-brand-50 transition-all text-center">
+                    <a href="#contact" class="px-8 py-4 bg-white border border-slate-200 text-slate-700 font-bold text-sm rounded-xl hover:border-brand-200 hover:text-brand-600 hover:bg-brand-50 transition-all text-center">
                         Our Methodology
                     </a>
                 </div>
                 
-                <!-- Trust Signals -->
-                <div class="mt-12 pt-8 border-t border-slate-100">
-                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Trusted Engineering Partner For</p>
-                    <div class="flex gap-6 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-                        <!-- Simple Geometric Logos -->
-                        <div class="h-6 w-20 bg-slate-800 rounded"></div>
-                        <div class="h-6 w-20 bg-slate-800 rounded"></div>
-                        <div class="h-6 w-20 bg-slate-800 rounded"></div>
+                <!-- Trust Signals (Moved closer to button for density) -->
+                <div class="flex items-center gap-4">
+                     <div class="flex -space-x-3">
+                        <img class="w-10 h-10 rounded-full border-2 border-white bg-slate-100" src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="">
+                        <img class="w-10 h-10 rounded-full border-2 border-white bg-slate-100" src="https://ui-avatars.com/api/?name=Jane+Smith&background=random" alt="">
+                        <img class="w-10 h-10 rounded-full border-2 border-white bg-slate-100" src="https://ui-avatars.com/api/?name=Bob+Wilson&background=random" alt="">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-50 flex items-center justify-center text-[10px] font-bold text-slate-500">+20</div>
+                    </div>
+                    <div class="h-8 w-px bg-slate-200"></div>
+                    <div class="flex flex-col">
+                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                        <span class="text-xs font-semibold text-slate-500">Trusted by 50+ Scaleups</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Visual (Mock UI - Level 3 Surface) -->
+            <!-- Right Visual (Mock UI - Increased Depth) -->
             <div class="relative hidden lg:block perspective-1000">
                 <!-- Abstract Background Blobs -->
-                <div class="absolute -top-20 -right-20 w-96 h-96 bg-brand-50 rounded-full blur-3xl opacity-60"></div>
-                <div class="absolute -bottom-20 -left-10 w-72 h-72 bg-slate-50 rounded-full blur-3xl opacity-80"></div>
+                <div class="absolute -top-20 -right-20 w-96 h-96 bg-brand-100/50 rounded-full blur-3xl opacity-60 mix-blend-multiply"></div>
+                <div class="absolute -bottom-20 -left-10 w-72 h-72 bg-purple-100/50 rounded-full blur-3xl opacity-60 mix-blend-multiply"></div>
 
                 <!-- Main Dashboard Container -->
-                <div class="relative bg-white rounded-2xl shadow-float border border-slate-100 p-2 overflow-hidden transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500 ease-out">
+                <div class="relative bg-white rounded-2xl shadow-float border border-slate-200/60 p-2 overflow-hidden transform hover:scale-[1.02] transition-transform duration-500 ease-out z-10">
                     
                     <!-- Window Controls -->
-                    <div class="h-10 bg-slate-50 border-b border-slate-100 flex items-center px-4 rounded-t-xl">
+                    <div class="h-10 bg-slate-50/50 border-b border-slate-100 flex items-center px-4 rounded-t-xl backdrop-blur-sm">
                         <div class="flex space-x-2">
-                            <div class="w-3 h-3 rounded-full bg-slate-200"></div>
-                            <div class="w-3 h-3 rounded-full bg-slate-200"></div>
-                            <div class="w-3 h-3 rounded-full bg-slate-200"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
                         </div>
-                        <div class="mx-auto text-[10px] font-mono text-slate-400">dashboard.sys</div>
+                        <div class="mx-auto text-[10px] font-mono font-medium text-slate-400">dashboard.sys</div>
                     </div>
 
                     <!-- Dashboard Content -->
-                    <div class="p-6">
+                    <div class="p-6 md:p-8">
                         <!-- Metric Row -->
                         <div class="grid grid-cols-3 gap-4 mb-8">
-                            <div class="p-4 rounded-xl bg-brand-50 border border-brand-100">
-                                <div class="text-[10px] font-semibold text-brand-600 uppercase mb-1">System Load</div>
-                                <div class="text-2xl font-bold text-slate-900">34%</div>
+                            <div class="p-5 rounded-xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="text-[10px] font-bold text-brand-600 uppercase mb-2 tracking-wider">Load</div>
+                                <div class="text-3xl font-bold text-slate-900">34%</div>
                             </div>
-                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-500 uppercase mb-1">Requests/s</div>
-                                <div class="text-2xl font-bold text-slate-900">1.2k</div>
+                            <div class="p-5 rounded-xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-wider">Req/s</div>
+                                <div class="text-3xl font-bold text-slate-900">1.2k</div>
                             </div>
-                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                                <div class="text-[10px] font-semibold text-slate-500 uppercase mb-1">Uptime</div>
-                                <div class="text-2xl font-bold text-slate-900 text-green-600">99.9%</div>
+                            <div class="p-5 rounded-xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-wider">Uptime</div>
+                                <div class="text-3xl font-bold text-slate-900 text-green-600">99.9%</div>
                             </div>
                         </div>
 
                         <!-- Graph Area (Abstract) -->
-                        <div class="h-32 w-full bg-slate-50 rounded-xl border border-slate-100 relative overflow-hidden mb-6">
-                            <svg class="absolute bottom-0 w-full h-full text-brand-100" viewBox="0 0 100 40" preserveAspectRatio="none">
-                                <path d="M0 40 L0 20 Q10 10 20 25 T40 20 T60 30 T80 15 T100 25 L100 40 Z" fill="currentColor"/>
-                                <path d="M0 40 L0 20 Q10 10 20 25 T40 20 T60 30 T80 15 T100 25" fill="none" stroke="#2563eb" stroke-width="0.5"/>
+                        <div class="h-40 w-full bg-slate-50/50 rounded-xl border border-slate-100 relative overflow-hidden mb-6 group">
+                             <!-- Grid lines inside graph -->
+                            <div class="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+                            
+                            <svg class="absolute bottom-0 w-full h-full text-brand-100 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500" viewBox="0 0 100 40" preserveAspectRatio="none">
+                                <path d="M0 40 L0 20 Q10 10 20 25 T40 20 T60 30 T80 15 T100 25 L100 40 Z" fill="currentColor" opacity="0.5"/>
+                                <path d="M0 40 L0 20 Q10 10 20 25 T40 20 T60 30 T80 15 T100 25" fill="none" stroke="#2563eb" stroke-width="0.75" vector-effect="non-scaling-stroke"/>
                             </svg>
                         </div>
 
                         <!-- Active Processes List -->
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-lg transition-colors cursor-default group">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-transparent hover:border-slate-200 transition-colors cursor-default">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                                    <div class="text-sm font-medium text-slate-700 group-hover:text-slate-900">Database Sharding</div>
+                                    <div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+                                    <div class="text-xs font-bold text-slate-700">Database Sharding</div>
                                 </div>
-                                <div class="text-xs text-slate-400 font-mono">Running</div>
+                                <div class="text-[10px] text-slate-400 font-mono">ACTIVE</div>
                             </div>
-                            <div class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-lg transition-colors cursor-default group">
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-transparent hover:border-slate-200 transition-colors cursor-default">
                                 <div class="flex items-center gap-3">
                                     <div class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></div>
-                                    <div class="text-sm font-medium text-slate-700 group-hover:text-slate-900">API Gateway</div>
+                                    <div class="text-xs font-bold text-slate-700">API Gateway</div>
                                 </div>
-                                <div class="text-xs text-brand-600 font-mono">Deploying...</div>
+                                <div class="text-[10px] text-brand-600 font-mono">DEPLOYING</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Floating Badge -->
-                <div class="absolute -bottom-6 -left-6 bg-white py-3 px-5 rounded-lg shadow-float border border-slate-100 flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
-                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                    <span class="text-xs font-semibold text-slate-700">All Systems Operational</span>
+                <!-- Floating Badge (Overlapping) -->
+                <div class="absolute -bottom-6 -right-6 bg-white py-4 px-6 rounded-xl shadow-float border border-slate-100 flex items-center gap-4 z-20 hover:-translate-y-1 transition-transform">
+                    <div class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.4)]"></div>
+                    <div>
+                         <div class="text-xs font-bold text-slate-900">System Stable</div>
+                         <div class="text-[10px] font-medium text-slate-400">Monitored 24/7</div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Capabilities Section (Level 1 Surface) -->
-    <section class="px-6 py-24 md:px-12 bg-slate-50 border-t border-slate-200">
+    <!-- Capabilities Section -->
+    <section class="relative z-10 px-6 py-32 md:px-12 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
                 <div class="max-w-xl">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">Technical Infrastructure</h2>
-                    <p class="text-slate-500 text-lg">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">Technical Infrastructure</h2>
+                    <p class="text-slate-500 text-lg font-medium leading-relaxed">
                         We build the engines that power your business. No templates, just purpose-built software architecture.
                     </p>
                 </div>
-                <a href="#" class="group flex items-center text-brand-600 font-semibold text-sm hover:text-brand-700">
+                <a href="#" class="group flex items-center text-brand-600 font-bold text-sm hover:text-brand-700 bg-brand-50 px-4 py-2 rounded-lg transition-colors">
                     View full service stack 
-                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-surface border border-slate-200 hover-lift group">
-                    <div class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-50 transition-colors">
-                        <svg class="w-6 h-6 text-slate-600 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                <div class="bg-white p-10 rounded-2xl shadow-surface border border-slate-200 hover-lift group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 group-hover:bg-brand-50 transition-colors"></div>
+                    <div class="w-12 h-12 bg-white border border-slate-100 shadow-sm rounded-xl flex items-center justify-center mb-8 relative z-10">
+                        <svg class="w-6 h-6 text-slate-700 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Inventory Systems</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 relative z-10">Inventory Systems</h3>
+                    <p class="text-sm text-slate-500 font-medium leading-relaxed relative z-10">
                         Real-time tracking architectures handling 1M+ SKUs with predictive stock alerts and multi-warehouse syncing logic.
                     </p>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-surface border border-slate-200 hover-lift group">
-                    <div class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-50 transition-colors">
-                        <svg class="w-6 h-6 text-slate-600 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                <div class="bg-white p-10 rounded-2xl shadow-surface border border-slate-200 hover-lift group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 group-hover:bg-brand-50 transition-colors"></div>
+                    <div class="w-12 h-12 bg-white border border-slate-100 shadow-sm rounded-xl flex items-center justify-center mb-8 relative z-10">
+                        <svg class="w-6 h-6 text-slate-700 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">SaaS Platforms</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 relative z-10">SaaS Platforms</h3>
+                    <p class="text-sm text-slate-500 font-medium leading-relaxed relative z-10">
                         Multi-tenant applications built on React and Node.js, designed for rapid scaling and complex user permission hierarchies.
                     </p>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-surface border border-slate-200 hover-lift group">
-                    <div class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-50 transition-colors">
-                        <svg class="w-6 h-6 text-slate-600 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                <div class="bg-white p-10 rounded-2xl shadow-surface border border-slate-200 hover-lift group relative overflow-hidden">
+                     <div class="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 group-hover:bg-brand-50 transition-colors"></div>
+                    <div class="w-12 h-12 bg-white border border-slate-100 shadow-sm rounded-xl flex items-center justify-center mb-8 relative z-10">
+                        <svg class="w-6 h-6 text-slate-700 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Security Audits</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 relative z-10">Security Audits</h3>
+                    <p class="text-sm text-slate-500 font-medium leading-relaxed relative z-10">
                         Full-stack vulnerability assessments and hardening for legacy systems to meet SOC2 and HIPAA compliance standards.
                     </p>
                 </div>
@@ -280,24 +297,24 @@
         </div>
     </section>
 
-    <!-- Workflow / Process (Level 0 Surface) -->
-    <section class="px-6 py-24 md:px-12 bg-white">
+    <!-- Workflow / Process -->
+    <section class="relative z-10 px-6 py-24 md:px-12 bg-slate-50 border-t border-slate-200">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
                 <!-- Sticky Info -->
                 <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit">
-                    <div class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-4">The Protocol</div>
-                    <h2 class="text-4xl font-bold text-slate-900 mb-6 tracking-tight">Engineering <br>Precision</h2>
-                    <p class="text-slate-500 leading-relaxed mb-8">
+                    <div class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-6">The Protocol</div>
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">Engineering <br>Precision</h2>
+                    <p class="text-slate-500 font-medium leading-relaxed mb-8">
                         We don't "wing it." Our development lifecycle is a rigid, predictable system designed to eliminate technical debt before it starts.
                     </p>
                     
-                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
                         <div class="flex items-center gap-3 mb-2">
-                            <div class="w-2 h-2 rounded-full bg-brand-600"></div>
+                            <div class="w-2 h-2 rounded-full bg-brand-600 animate-pulse"></div>
                             <span class="text-xs font-bold uppercase text-slate-900">Sprint Velocity</span>
                         </div>
-                        <div class="text-sm text-slate-500">2-week delivery cycles with mandatory staging demos.</div>
+                        <div class="text-sm text-slate-500 font-medium">2-week delivery cycles with mandatory staging demos.</div>
                     </div>
                 </div>
 
@@ -308,9 +325,9 @@
                         <div class="flex-shrink-0 w-12 pt-1">
                             <span class="text-sm font-bold text-slate-300 group-hover:text-brand-600 transition-colors">01</span>
                         </div>
-                        <div class="pb-12 border-b border-slate-100 group-last:border-0">
+                        <div class="pb-12 border-b border-slate-200 group-last:border-0">
                             <h3 class="text-xl font-bold text-slate-900 mb-3">System Blueprinting</h3>
-                            <p class="text-slate-500 leading-relaxed">
+                            <p class="text-slate-500 font-medium leading-relaxed">
                                 Before code, we architect. We map database entity relationships, API contract definitions, and user flow states. This eliminates 90% of "scope creep" later.
                             </p>
                         </div>
@@ -320,9 +337,9 @@
                         <div class="flex-shrink-0 w-12 pt-1">
                             <span class="text-sm font-bold text-slate-300 group-hover:text-brand-600 transition-colors">02</span>
                         </div>
-                        <div class="pb-12 border-b border-slate-100 group-last:border-0">
+                        <div class="pb-12 border-b border-slate-200 group-last:border-0">
                             <h3 class="text-xl font-bold text-slate-900 mb-3">Component Development</h3>
-                            <p class="text-slate-500 leading-relaxed">
+                            <p class="text-slate-500 font-medium leading-relaxed">
                                 We build using atomic design principles. Every UI element is a reusable component, ensuring your system remains consistent and easy to update as it scales.
                             </p>
                         </div>
@@ -332,9 +349,9 @@
                         <div class="flex-shrink-0 w-12 pt-1">
                             <span class="text-sm font-bold text-slate-300 group-hover:text-brand-600 transition-colors">03</span>
                         </div>
-                        <div class="pb-12 border-b border-slate-100 group-last:border-0">
+                        <div class="pb-12 border-b border-slate-200 group-last:border-0">
                             <h3 class="text-xl font-bold text-slate-900 mb-3">Rigorous QA Pipeline</h3>
-                            <p class="text-slate-500 leading-relaxed">
+                            <p class="text-slate-500 font-medium leading-relaxed">
                                 Automated unit tests, integration tests, and manual edge-case hunting. We don't deploy until the system proves it can handle the load.
                             </p>
                         </div>
@@ -344,9 +361,9 @@
                         <div class="flex-shrink-0 w-12 pt-1">
                             <span class="text-sm font-bold text-slate-300 group-hover:text-brand-600 transition-colors">04</span>
                         </div>
-                        <div class="pb-12 border-b border-slate-100 group-last:border-0">
+                        <div class="pb-12 border-b border-slate-200 group-last:border-0">
                             <h3 class="text-xl font-bold text-slate-900 mb-3">Deployment & Scale</h3>
-                            <p class="text-slate-500 leading-relaxed">
+                            <p class="text-slate-500 font-medium leading-relaxed">
                                 Zero-downtime deployments. We set up your CI/CD pipelines so future updates are as simple as a git push, with automatic rollbacks if metrics deviate.
                             </p>
                         </div>
@@ -356,20 +373,20 @@
         </div>
     </section>
 
-    <!-- FAQ Section (Level 0 Surface) -->
-    <section class="px-6 py-24 md:px-12 bg-white border-t border-slate-100">
+    <!-- FAQ Section -->
+    <section class="relative z-10 px-6 py-24 md:px-12 bg-white border-t border-slate-100">
         <div class="max-w-2xl mx-auto">
-            <h2 class="text-3xl font-bold text-center text-slate-900 mb-12 tracking-tight">Technical FAQ</h2>
+            <h2 class="text-3xl font-extrabold text-center text-slate-900 mb-12 tracking-tight">Technical FAQ</h2>
 
             <div class="space-y-4">
                 <!-- FAQ 1 -->
                 <div class="faq-item bg-white border border-slate-200 rounded-xl hover:border-brand-200 transition-colors">
                     <input type="checkbox" id="faq-1" class="hidden">
-                    <label for="faq-1" class="faq-header flex items-center justify-between p-5 cursor-pointer select-none text-slate-700 font-medium hover:text-brand-600 transition-colors">
+                    <label for="faq-1" class="faq-header flex items-center justify-between p-5 cursor-pointer select-none text-slate-800 font-bold hover:text-brand-600 transition-colors">
                         <span>Do you handle legacy code migration?</span>
                         <svg class="w-5 h-5 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </label>
-                    <div class="faq-content px-5 text-slate-500 text-sm leading-relaxed">
+                    <div class="faq-content px-5 text-slate-500 text-sm font-medium leading-relaxed">
                         <p class="pb-5">Yes. We specialize in "strangler fig" migration patterns—slowly replacing pieces of your legacy monolith with modern microservices until the old system can be safely decommissioned.</p>
                     </div>
                 </div>
@@ -377,11 +394,11 @@
                 <!-- FAQ 2 -->
                 <div class="faq-item bg-white border border-slate-200 rounded-xl hover:border-brand-200 transition-colors">
                     <input type="checkbox" id="faq-2" class="hidden">
-                    <label for="faq-2" class="faq-header flex items-center justify-between p-5 cursor-pointer select-none text-slate-700 font-medium hover:text-brand-600 transition-colors">
+                    <label for="faq-2" class="faq-header flex items-center justify-between p-5 cursor-pointer select-none text-slate-800 font-bold hover:text-brand-600 transition-colors">
                         <span>What is your typical tech stack?</span>
                         <svg class="w-5 h-5 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </label>
-                    <div class="faq-content px-5 text-slate-500 text-sm leading-relaxed">
+                    <div class="faq-content px-5 text-slate-500 text-sm font-medium leading-relaxed">
                         <p class="pb-5">We default to TypeScript, React, Node.js, and PostgreSQL for most web applications. For high-performance needs, we utilize Go or Rust. We host primarily on AWS or Vercel depending on scale.</p>
                     </div>
                 </div>
@@ -389,11 +406,11 @@
                 <!-- FAQ 3 -->
                 <div class="faq-item bg-white border border-slate-200 rounded-xl hover:border-brand-200 transition-colors">
                     <input type="checkbox" id="faq-3" class="hidden">
-                    <label for="faq-3" class="faq-header flex items-center justify-between p-5 cursor-pointer select-none text-slate-700 font-medium hover:text-brand-600 transition-colors">
+                    <label for="faq-3" class="faq-header flex items-center justify-between p-5 cursor-pointer select-none text-slate-800 font-bold hover:text-brand-600 transition-colors">
                         <span>Do you offer SLA support?</span>
                         <svg class="w-5 h-5 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </label>
-                    <div class="faq-content px-5 text-slate-500 text-sm leading-relaxed">
+                    <div class="faq-content px-5 text-slate-500 text-sm font-medium leading-relaxed">
                         <p class="pb-5">Yes. We offer tiered retainer packages that include guaranteed response times (SLAs), monthly security patching, and uptime monitoring.</p>
                     </div>
                 </div>
@@ -401,42 +418,47 @@
         </div>
     </section>
 
-    <!-- Contact / CTA (Level 2 Surface) -->
-    <section id="contact" class="px-6 py-24 md:px-12 bg-white">
-        <div class="max-w-4xl mx-auto bg-slate-900 rounded-2xl overflow-hidden shadow-2xl relative">
+    <!-- Contact / CTA -->
+    <section id="contact" class="relative z-10 px-6 py-24 md:px-12 bg-white">
+        <div class="max-w-4xl mx-auto bg-slate-900 rounded-3xl overflow-hidden shadow-2xl relative border border-slate-800">
             <!-- Decorative Glow -->
-            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-600 rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-brand-600 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="p-10 md:p-12 flex flex-col justify-between relative z-10">
+                <div class="p-10 md:p-16 flex flex-col justify-between relative z-10">
                     <div>
-                        <h2 class="text-3xl font-bold text-white mb-4">Ready to upgrade?</h2>
-                        <p class="text-slate-400 leading-relaxed mb-8">
+                        <h2 class="text-3xl font-extrabold text-white mb-6 tracking-tight">Ready to upgrade?</h2>
+                        <p class="text-slate-400 font-medium leading-relaxed mb-8">
                             Leave your details. Our lead engineer will review your requirements and reach out within 24 hours.
                         </p>
                     </div>
-                    <div class="text-sm text-slate-500 font-mono">
-                        // No salespeople. <br>
-                        // Just engineers.
+                    <div class="flex items-center gap-2 text-sm text-slate-500 font-mono">
+                        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        System online
                     </div>
                 </div>
 
-                <div class="bg-slate-800/50 p-10 md:p-12 border-l border-slate-700/50 backdrop-blur-sm">
+                <div class="bg-slate-800/50 p-10 md:p-16 border-l border-slate-700/50 backdrop-blur-sm">
                     <form class="space-y-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Work Email</label>
-                            <input type="email" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-4 py-3 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all placeholder-slate-600" placeholder="name@company.com">
+                            <label class="block text-xs font-bold text-slate-300 uppercase mb-2 tracking-wide">Work Email</label>
+                            <input type="email" class="w-full bg-slate-900/50 border border-slate-700 text-white rounded-lg px-4 py-3 text-sm font-medium focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all placeholder-slate-600" placeholder="name@company.com">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Project Type</label>
-                            <select class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-4 py-3 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all appearance-none">
-                                <option>Custom Web Application</option>
-                                <option>System Architecture Design</option>
-                                <option>Inventory Management</option>
-                                <option>Legacy Migration</option>
-                            </select>
+                            <label class="block text-xs font-bold text-slate-300 uppercase mb-2 tracking-wide">Project Type</label>
+                            <div class="relative">
+                                <select class="w-full bg-slate-900/50 border border-slate-700 text-white rounded-lg px-4 py-3 text-sm font-medium focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all appearance-none cursor-pointer">
+                                    <option>Custom Web Application</option>
+                                    <option>System Architecture Design</option>
+                                    <option>Inventory Management</option>
+                                    <option>Legacy Migration</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                            </div>
                         </div>
-                        <button class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-brand-900/20 mt-2">
+                        <button class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3.5 rounded-lg transition-all shadow-lg shadow-brand-900/40 mt-2 hover:-translate-y-0.5">
                             Initialize Request
                         </button>
                     </form>
@@ -446,17 +468,20 @@
     </section>
 
     <!-- Footer -->
-    <footer class="px-6 py-12 md:px-12 bg-white border-t border-slate-100">
+    <footer class="relative z-10 px-6 py-12 md:px-12 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <div class="w-6 h-6 bg-slate-900 rounded flex items-center justify-center">
-                    <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                    D
                 </div>
                 <span class="text-sm font-bold text-slate-900">DevSystem</span>
             </div>
-            <div class="text-xs text-slate-400">
+            <div class="flex gap-6 text-sm font-semibold text-slate-500">
+                <a href="#" class="hover:text-slate-900">Privacy</a>
+                <a href="#" class="hover:text-slate-900">Terms</a>
+                <a href="#" class="hover:text-slate-900">Twitter</a>
+            </div>
+            <div class="text-xs text-slate-400 font-medium">
                 &copy; 2024 DevSystem Inc. All systems operational.
             </div>
         </div>
