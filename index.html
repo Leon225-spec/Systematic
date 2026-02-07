@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevSystem - Custom Software & Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+        }
+        .serif-title {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 10px -4px rgba(0, 0, 0, 0.02);
+        }
+        .nav-link {
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover {
+            color: #000;
+        }
+        .step-number {
+            -webkit-text-stroke: 1px #e5e7eb;
+            color: transparent;
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom FAQ Accordion Logic */
+        .faq-item input:checked ~ .faq-content {
+            max-height: 500px;
+            margin-top: 1rem;
+            opacity: 1;
+        }
+        .faq-item input:checked ~ .faq-header svg {
+            transform: rotate(180deg);
+        }
+        /* Input styling */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: #000;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(0,0,0,0.03);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="flex items-center justify-between px-6 py-8 md:px-12 max-w-7xl mx-auto">
+        <div class="text-xl font-semibold tracking-tight">Systematic.</div>
+        
+        <div class="hidden md:flex items-center space-x-10 text-sm font-medium text-gray-500">
+            <a href="#" class="nav-link">Web Dev</a>
+            <a href="#" class="nav-link">System Design</a>
+            <a href="#" class="nav-link">Custom Software</a>
+            <a href="#" class="nav-link">About</a>
+        </div>
+
+        <a href="#contact" class="px-6 py-2.5 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors">
+            Start a project
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="px-6 pt-16 pb-24 md:px-12 md:pt-24 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            
+            <!-- Left Content -->
+            <div class="max-w-xl">
+                <div class="text-sm font-medium text-gray-400 mb-6 uppercase tracking-widest">
+                    Web Dev & System Design
+                </div>
+                <h1 class="serif-title text-5xl md:text-7xl leading-tight mb-8">
+                    Lean and powerful software for high-growth teams.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-500 leading-relaxed mb-10 font-light">
+                    We've studied hundreds of systems over the years. Now, we share that expertise by creating intuitive, accessible, and beautiful custom software tailored to your business needs.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="px-8 py-4 bg-black text-white font-medium rounded-lg hover:bg-gray-800 transition-all text-center">
+                        View our latest work
+                    </button>
+                    <a href="#contact" class="px-8 py-4 border border-gray-200 text-gray-600 font-medium rounded-lg hover:border-black hover:text-black transition-all text-center">
+                        Our process
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Visual (Mock UI Elements) -->
+            <div class="relative hidden lg:block">
+                <!-- Large Card Background -->
+                <div class="w-full h-[500px] bg-gray-50 rounded-3xl overflow-hidden flex items-center justify-center p-12 border border-gray-100">
+                    
+                    <!-- Floating UI Component Example -->
+                    <div class="bg-white p-8 rounded-2xl card-shadow border border-gray-100 w-full max-w-md">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="text-xs text-gray-400 font-mono uppercase">Dashboard.v2</div>
+                        </div>
+
+                        <!-- Status Tags -->
+                        <div class="flex gap-2 mb-6">
+                            <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-full border border-green-100 flex items-center">
+                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Approved
+                            </span>
+                            <span class="px-3 py-1 bg-orange-50 text-orange-700 text-xs font-medium rounded-full border border-orange-100 flex items-center">
+                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                Pending
+                            </span>
+                        </div>
+
+                        <!-- Main Notification -->
+                        <div class="p-6 bg-white border-l-4 border-green-500 rounded-r-xl bg-gray-50/50 mb-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="text-sm font-semibold mb-1">Website submitted</h4>
+                                    <p class="text-xs text-gray-500">You'll be notified if it's accepted.</p>
+                                </div>
+                                <button class="text-gray-300 hover:text-gray-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Inputs -->
+                        <div class="flex items-center space-x-6">
+                            <label class="flex items-center text-sm text-gray-600">
+                                <input type="radio" checked class="w-4 h-4 text-black border-gray-300 mr-2 focus:ring-black">
+                                Radio
+                            </label>
+                            <label class="flex items-center text-sm text-gray-600">
+                                <input type="checkbox" checked class="w-4 h-4 rounded text-blue-600 border-gray-300 mr-2 focus:ring-blue-500">
+                                Checkbox
+                            </label>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-500 text-xs rounded-full">Tag</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Small Floating Detail Card -->
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl card-shadow border border-gray-100 flex items-center space-x-4">
+                   <div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                   </div>
+                   <div>
+                        <div class="text-xs font-semibold">Custom Software</div>
+                        <div class="text-[10px] text-gray-400">Built to scale.</div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- What We Build Section -->
+    <section class="px-6 py-24 md:px-12 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Our Expertise</div>
+                    <h2 class="serif-title text-4xl md:text-5xl">What We Build</h2>
+                </div>
+                <p class="text-gray-500 font-light text-lg max-w-sm">
+                    We specialize in high-utility software that solves operational bottlenecks.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Large Featured Card: Inventory -->
+                <div class="group bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100 transition-all hover:bg-gray-100/50">
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-semibold mb-4">Inventory & Asset Tracking</h3>
+                        <p class="text-gray-500 font-light leading-relaxed max-w-md">
+                            Eliminate spreadsheets and "guess-work." We build real-time systems that track every unit, movement, and status across multiple locations.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 card-shadow border border-gray-100">
+                        <div class="flex items-center justify-between pb-4 border-b border-gray-50 mb-4">
+                            <span class="text-xs font-bold uppercase text-gray-400">Current Stock</span>
+                            <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">Live</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full w-4/5 bg-black"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] font-mono text-gray-400">
+                                <span>TOTAL CAPACITY</span>
+                                <span>82% UTILIZED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Web Dev -->
+                    <div class="p-8 border border-gray-100 rounded-3xl hover:border-gray-200 transition-colors">
+                        <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9h18"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-3">Custom Web Apps</h3>
+                        <p class="text-sm text-gray-500 font-light leading-relaxed">
+                            Scalable platforms built with modern stacks (React, Node) focused on performance and speed.
+                        </p>
+                    </div>
+
+                    <!-- System Design -->
+                    <div class="p-8 border border-gray-100 rounded-3xl hover:border-gray-200 transition-colors">
+                        <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-3">Internal Systems</h3>
+                        <p class="text-sm text-gray-500 font-light leading-relaxed">
+                            Database architectures and automated workflows that keep your back-office running smoothly.
+                        </p>
+                    </div>
+
+                    <!-- Full Span Bottom (Optional) -->
+                    <div class="md:col-span-2 p-8 bg-black text-white rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Looking for a specific integration?</h3>
+                            <p class="text-sm text-gray-400 font-light">We work with APIs across logistics, finance, and CRM.</p>
+                        </div>
+                        <a href="#contact" class="text-sm font-medium border border-gray-700 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">
+                            Talk to us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="px-6 py-24 md:px-12 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                <!-- Sticky Header Side -->
+                <div class="lg:col-span-4 lg:sticky lg:top-12 h-fit">
+                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">The Process</div>
+                    <h2 class="serif-title text-4xl md:text-5xl mb-6">How It Works</h2>
+                    <p class="text-gray-500 font-light leading-relaxed">
+                        We don't just build and disappear. We follow a structured methodology to ensure your system is as resilient as it is functional.
+                    </p>
+                    <div class="mt-10 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                        <div class="text-xs font-bold mb-2">Estimated Timeline</div>
+                        <div class="text-sm text-gray-500">4-12 weeks depending on complexity.</div>
+                    </div>
+                </div>
+
+                <!-- Steps List -->
+                <div class="lg:col-span-7 lg:col-start-6 space-y-16">
+                    <!-- Step 1 -->
+                    <div class="flex gap-8 group">
+                        <div class="step-number text-6xl font-bold leading-none select-none transition-all group-hover:text-gray-100 group-hover:[-webkit-text-stroke:1px_#000]">01</div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3">Discovery & Audit</h3>
+                            <p class="text-gray-500 font-light leading-relaxed">
+                                We start by mapping out your current workflows and identifying bottlenecks. We don't write a single line of code until we fully understand your business logic.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex gap-8 group">
+                        <div class="step-number text-6xl font-bold leading-none select-none transition-all group-hover:text-gray-100 group-hover:[-webkit-text-stroke:1px_#000]">02</div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3">Architecture Design</h3>
+                            <p class="text-gray-500 font-light leading-relaxed">
+                                We design the database structures and user interfaces. You'll receive high-fidelity mockups (like the one in our hero section) to approve the flow.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex gap-8 group">
+                        <div class="step-number text-6xl font-bold leading-none select-none transition-all group-hover:text-gray-100 group-hover:[-webkit-text-stroke:1px_#000]">03</div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3">Agile Development</h3>
+                            <p class="text-gray-500 font-light leading-relaxed">
+                                Our engineers build in two-week sprints. You get access to a staging environment from week two so you can watch the system grow in real-time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex gap-8 group">
+                        <div class="step-number text-6xl font-bold leading-none select-none transition-all group-hover:text-gray-100 group-hover:[-webkit-text-stroke:1px_#000]">04</div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3">Deployment & Support</h3>
+                            <p class="text-gray-500 font-light leading-relaxed">
+                                We handle the cloud setup and migration. After launch, we provide ongoing maintenance to ensure your system evolves alongside your business.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Its For Section -->
+    <section class="px-6 py-24 md:px-12 bg-gray-50/50 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="serif-title text-4xl md:text-5xl mb-6">Who It's For</h2>
+                <p class="text-gray-500 font-light text-lg">
+                    We partner with businesses that have outgrown their current tools and need systems that can keep up with their ambition.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-10 rounded-2xl border border-gray-100 card-shadow">
+                    <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center mb-8">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Established Logistics</h3>
+                    <p class="text-gray-500 font-light leading-relaxed">
+                        For companies managing complex supply chains that need custom inventory and tracking systems to eliminate manual errors.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-10 rounded-2xl border border-gray-100 card-shadow">
+                    <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center mb-8">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">High-Growth Startups</h3>
+                    <p class="text-gray-500 font-light leading-relaxed">
+                        For teams building the next big thing who need a technical partner to architect and scale their primary web applications.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-10 rounded-2xl border border-gray-100 card-shadow">
+                    <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center mb-8">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Data-Driven Firms</h3>
+                    <p class="text-gray-500 font-light leading-relaxed">
+                        For businesses that require highly secure, custom-built system designs to manage sensitive internal workflows and analytics.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="px-6 py-24 md:px-12 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="serif-title text-4xl md:text-5xl mb-4">Common Questions</h2>
+                <p class="text-gray-500 font-light">Everything you need to know about our partnership.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item group border border-gray-100 rounded-2xl overflow-hidden hover:border-gray-200 transition-all">
+                    <input type="checkbox" id="faq-1" class="hidden">
+                    <label for="faq-1" class="faq-header flex items-center justify-between p-6 cursor-pointer select-none">
+                        <span class="font-medium text-lg">Do you offer fixed-price projects?</span>
+                        <svg class="w-5 h-5 text-gray-300 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </label>
+                    <div class="faq-content max-h-0 px-6 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-gray-500 font-light leading-relaxed">
+                            Yes, for clearly defined scopes like landing pages or specific system audits. For larger, evolving custom software projects, we typically work on a sprint-based model to ensure maximum flexibility and quality.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item group border border-gray-100 rounded-2xl overflow-hidden hover:border-gray-200 transition-all">
+                    <input type="checkbox" id="faq-2" class="hidden">
+                    <label for="faq-2" class="faq-header flex items-center justify-between p-6 cursor-pointer select-none">
+                        <span class="font-medium text-lg">What happens after the system is launched?</span>
+                        <svg class="w-5 h-5 text-gray-300 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </label>
+                    <div class="faq-content max-h-0 px-6 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-gray-500 font-light leading-relaxed">
+                            We provide a 30-day post-launch hyper-care period for free. After that, we offer various support retainers that include security updates, minor feature additions, and performance monitoring.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item group border border-gray-100 rounded-2xl overflow-hidden hover:border-gray-200 transition-all">
+                    <input type="checkbox" id="faq-3" class="hidden">
+                    <label for="faq-3" class="faq-header flex items-center justify-between p-6 cursor-pointer select-none">
+                        <span class="font-medium text-lg">Can you work with our existing team?</span>
+                        <svg class="w-5 h-5 text-gray-300 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </label>
+                    <div class="faq-content max-h-0 px-6 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-gray-500 font-light leading-relaxed">
+                            Absolutely. We often act as a technical extension for in-house teams, handling the heavy lifting of architecture and system design while your team focuses on day-to-day operations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item group border border-gray-100 rounded-2xl overflow-hidden hover:border-gray-200 transition-all">
+                    <input type="checkbox" id="faq-4" class="hidden">
+                    <label for="faq-4" class="faq-header flex items-center justify-between p-6 cursor-pointer select-none">
+                        <span class="font-medium text-lg">Which industries do you specialize in?</span>
+                        <svg class="w-5 h-5 text-gray-300 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </label>
+                    <div class="faq-content max-h-0 px-6 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-gray-500 font-light leading-relaxed">
+                            While we are industry-agnostic in our technical capability, we have deep experience in Logistics, Fintech, and SaaS-based operations where complex logic and data integrity are paramount.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="px-6 py-24 md:px-12 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <!-- Left Side: Content -->
+                <div>
+                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Contact Us</div>
+                    <h2 class="serif-title text-4xl md:text-6xl mb-8 leading-tight">Ready to build something better?</h2>
+                    <p class="text-gray-500 font-light text-lg mb-12 leading-relaxed">
+                        Stop fighting with inefficient tools. Tell us about your project, your goals, and your timeline. We usually respond within 24 hours.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-semibold">Email us</div>
+                                <div class="text-sm text-gray-500">hello@systematic.dev</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-semibold">Visit us</div>
+                                <div class="text-sm text-gray-500">123 Design District, SF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Form -->
+                <div class="bg-gray-50 p-8 md:p-12 rounded-3xl border border-gray-100">
+                    <form action="#" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Full Name</label>
+                                <input type="text" placeholder="John Doe" class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Email Address</label>
+                                <input type="email" placeholder="john@company.com" class="form-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Project Type</label>
+                            <select class="form-input appearance-none bg-no-repeat bg-right pr-10" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-position: right 1rem center; background-size: 1rem;">
+                                <option>Custom Software</option>
+                                <option>Inventory System</option>
+                                <option>Web Application</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Project Details</label>
+                            <textarea rows="4" placeholder="Briefly describe your goals..." class="form-input resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-black text-white font-medium rounded-xl hover:bg-gray-800 transition-all">
+                            Send Inquiry
+                        </button>
+                        <p class="text-[10px] text-center text-gray-400 uppercase tracking-widest mt-4">
+                            Average response time: 24 hours
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="px-6 py-12 md:px-12 border-t border-gray-100 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm font-semibold tracking-tight">Systematic.</div>
+            <div class="flex space-x-8 text-xs text-gray-400 font-medium">
+                <a href="#" class="hover:text-black">Terms</a>
+                <a href="#" class="hover:text-black">Privacy</a>
+                <a href="#" class="hover:text-black">LinkedIn</a>
+            </div>
+            <div class="text-xs text-gray-400 font-light">
+                © 2024 Systematic Agency. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
