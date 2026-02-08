@@ -14,180 +14,249 @@
             --text-main: #1d1d1f;
             --text-muted: #6e6e73;
             --bg-warm: #fbfbfd;
+            --grid-color: rgba(0, 0, 0, 0.03);
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-warm);
+            /* Subtle grid pattern matched to Practical UI */
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
             color: var(--text-main);
             margin: 0;
             overflow: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Typography Refinement */
+        /* Typography Refinement - The "Practical UI" Secret */
         .hero-label {
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         .hero-title {
-            /* Matched to Practical UI scale */
-            font-size: 3.75rem; 
-            line-height: 1.1;
-            font-weight: 700;
-            letter-spacing: -0.025em;
+            font-size: 3.5rem; 
+            line-height: 1.05;
+            font-weight: 600; /* Reduced from 700 to match the clean aesthetic */
+            letter-spacing: -0.04em; /* Very tight tracking */
             margin-bottom: 1.5rem;
-            max-width: 15ch;
-            color: #2d2e3e;
+            max-width: 14ch;
+            color: #111827;
         }
 
         .hero-description {
-            font-size: 1.15rem;
-            line-height: 1.55;
+            font-size: 1.125rem;
+            line-height: 1.6;
             font-weight: 400;
-            color: #5d5d6d;
-            max-width: 440px;
+            color: #4b5563;
+            max-width: 460px;
             margin-bottom: 2.5rem;
         }
 
-        /* Button Styling - Matched to Screenshot */
+        /* Buttons */
         .btn-primary {
             background-color: var(--brand-blue);
             color: white;
-            padding: 0.85rem 2rem;
-            border-radius: 8px;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 1rem;
-            transition: opacity 0.2s;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(59, 73, 223, 0.15);
         }
 
         .btn-secondary {
-            border: 1px solid #d2d2d7;
+            border: 1px solid #d1d5db;
             color: var(--brand-blue);
-            padding: 0.85rem 2rem;
-            border-radius: 8px;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 1rem;
-            background: transparent;
+            font-size: 0.95rem;
+            background: white;
             margin-left: 0.75rem;
+            transition: all 0.2s;
         }
 
-        /* Logo Mockup */
+        .btn-secondary:hover {
+            background: #f9fafb;
+            border-color: #caced3;
+        }
+
+        /* Nav Logo */
         .logo-text {
             font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -0.02em;
-            color: #1a1b26;
+            font-size: 1.4rem;
+            letter-spacing: -0.03em;
+            color: #111827;
+            display: flex;
+            align-items: center;
         }
         
         .logo-box {
-            border: 1.5px solid var(--brand-blue);
-            padding: 2px 6px;
+            border: 2px solid var(--brand-blue);
+            padding: 1px 5px;
             border-radius: 4px;
-            margin-left: 4px;
+            margin-left: 5px;
+            font-size: 0.9rem;
             color: var(--brand-blue);
         }
 
-        /* Right Illustration / Cards */
-        .preview-container {
+        /* Dashboard Illustration */
+        .dashboard-mockup {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            width: 580px;
+            height: 420px;
+            overflow: hidden;
             position: relative;
-            height: 100%;
+            transform: perspective(1000px) rotateY(-5deg);
+        }
+
+        .dash-header {
+            height: 48px;
+            border-bottom: 1px solid #f3f4f6;
+            padding: 0 16px;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: space-between;
         }
 
-        .book-mockup {
-            width: 380px;
-            height: 520px;
-            background: var(--brand-blue);
-            border-radius: 12px 24px 24px 12px;
-            box-shadow: 20px 40px 80px rgba(59, 73, 223, 0.2);
-            position: relative;
-            padding: 40px;
-            color: white;
+        .dash-content {
+            padding: 24px;
+        }
+
+        .dash-row {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f9fafb;
         }
 
-        .book-mockup::before {
-            content: '';
-            position: absolute;
-            left: 10px;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: rgba(255,255,255,0.1);
+        .dash-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f3f4f6;
+            margin-right: 12px;
         }
 
-        .card-bg {
-            position: absolute;
-            top: 50%;
-            right: 15%;
-            transform: translateY(-50%);
-            width: 500px;
-            height: 400px;
-            background: white;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            z-index: -1;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        .dash-line {
+            height: 8px;
+            background: #f3f4f6;
+            border-radius: 4px;
+        }
+
+        .status-pill {
+            padding: 4px 8px;
+            border-radius: 9999px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: #eef2ff;
+            color: var(--brand-blue);
         }
     </style>
 </head>
 <body>
 
-    <header class="max-w-7xl mx-auto px-12 py-8 flex justify-between items-center">
+    <header class="max-w-7xl mx-auto px-16 py-10 flex justify-between items-center">
         <div class="logo-text">
-            Iron<span class="logo-box">BT</span>
+            Practical<span class="logo-box">BT</span>
         </div>
-        <nav class="flex items-center space-x-8 text-sm font-medium text-gray-600">
+        <nav class="flex items-center space-x-10 text-[0.9rem] font-medium text-gray-500">
             <a href="#" class="hover:text-black transition-colors">Services</a>
-            <a href="#" class="hover:text-black transition-colors">Case Studies</a>
-            <a href="#" class="hover:text-black transition-colors">About</a>
+            <a href="#" class="hover:text-black transition-colors">Solutions</a>
+            <a href="#" class="hover:text-black transition-colors">Pricing</a>
             <a href="#" class="text-black font-semibold">Contact</a>
         </nav>
     </header>
 
-    <main class="max-w-7xl mx-auto px-12 grid grid-cols-1 lg:grid-cols-2 gap-4 items-center h-[calc(100vh-140px)]">
+    <main class="max-w-7xl mx-auto px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-[calc(100vh-160px)]">
         
         <!-- Content Left -->
-        <div>
-            <div class="hero-label">Software Studio</div>
+        <div class="z-10">
+            <span class="hero-label">Custom Software Studio</span>
             <h1 class="hero-title">
-                Custom software for better business.
+                Digital tools for growing teams.
             </h1>
             <p class="hero-description">
-                Design and build intuitive, accessible, and powerful digital tools for your inventory and operations.
+                Design and build intuitive inventory systems and powerful web applications using logic-driven design principles.
             </p>
             <div class="flex items-center">
-                <a href="#" class="btn-primary">Get started</a>
-                <a href="#" class="btn-secondary">Free intro</a>
+                <a href="#" class="btn-primary">View services</a>
+                <a href="#" class="btn-secondary">Free preview</a>
             </div>
         </div>
 
-        <!-- Illustration Right -->
-        <div class="preview-container">
-            <div class="card-bg"></div>
-            <div class="book-mockup">
-                <div class="mb-4 opacity-50 text-xs tracking-widest uppercase font-bold">IronByte Studio</div>
-                <div class="text-3xl font-bold leading-tight mb-2">Systems Design</div>
-                <div class="w-12 h-1 bg-white mb-6"></div>
-                <p class="text-sm opacity-80 max-w-[200px]">Logic-driven tools to automate your workflow.</p>
+        <!-- Dashboard Illustration Right -->
+        <div class="flex justify-end">
+            <div class="dashboard-mockup">
+                <div class="dash-header">
+                    <div class="flex space-x-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+                    </div>
+                    <div class="w-24 h-2 bg-gray-100 rounded-full"></div>
+                </div>
+                <div class="dash-content">
+                    <div class="flex justify-between items-end mb-8">
+                        <div>
+                            <div class="h-3 w-32 bg-gray-200 rounded-full mb-2"></div>
+                            <div class="h-6 w-16 bg-gray-100 rounded-full"></div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <div class="w-8 h-8 rounded bg-blue-50"></div>
+                            <div class="w-8 h-8 rounded bg-gray-50"></div>
+                        </div>
+                    </div>
+
+                    <!-- Inventory List -->
+                    <div class="space-y-1">
+                        <div class="dash-row">
+                            <div class="dash-circle"></div>
+                            <div class="flex-1">
+                                <div class="dash-line w-24 mb-2"></div>
+                                <div class="dash-line w-12 opacity-50"></div>
+                            </div>
+                            <div class="status-pill">In Stock</div>
+                        </div>
+                        <div class="dash-row">
+                            <div class="dash-circle"></div>
+                            <div class="flex-1">
+                                <div class="dash-line w-32 mb-2"></div>
+                                <div class="dash-line w-16 opacity-50"></div>
+                            </div>
+                            <div class="status-pill">In Stock</div>
+                        </div>
+                        <div class="dash-row">
+                            <div class="dash-circle" style="background: #eef2ff"></div>
+                            <div class="flex-1">
+                                <div class="dash-line w-20 mb-2" style="background: var(--brand-blue); opacity: 0.2"></div>
+                                <div class="dash-line w-28 opacity-50"></div>
+                            </div>
+                            <div class="status-pill" style="background: #fee2e2; color: #ef4444">Low Stock</div>
+                        </div>
+                    </div>
+                </div>
                 
-                <!-- Simple abstract UI overlay -->
-                <div class="absolute top-10 right-10 w-16 h-16 border-2 border-white/20 rounded-full flex items-center justify-content-center">
-                    <div class="w-8 h-8 border border-white/40 rounded-full"></div>
+                <!-- Floating Blue Card Detail -->
+                <div class="absolute bottom-6 right-6 w-48 h-32 bg-brand-blue rounded-xl shadow-2xl p-4 flex flex-col justify-between" style="background-color: var(--brand-blue);">
+                    <div class="w-8 h-8 rounded-lg bg-white/20"></div>
+                    <div>
+                        <div class="text-[10px] text-white/60 font-bold uppercase tracking-widest mb-1">Total Assets</div>
+                        <div class="text-xl text-white font-bold tracking-tight">$42,080</div>
+                    </div>
                 </div>
             </div>
         </div>
