@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IronByte | Custom Software</title>
+    <title>IronByte | Custom Software Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,53 +11,73 @@
     <style>
         :root {
             --brand-blue: #3B49DF;
-            --text-main: #1d1d1f;
-            --text-muted: #6e6e73;
-            --bg-warm: #fbfbfd;
-            --grid-color: rgba(0, 0, 0, 0.03);
+            --text-main: #1A1C1E;
+            --text-muted: #636D7A;
+            --bg-warm: #F8F9FB;
+            --grid-line: #EAECEF;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-warm);
-            /* Subtle grid pattern matched to Practical UI */
+            /* Refined grid background */
             background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 32px 32px;
             color: var(--text-main);
             margin: 0;
             overflow: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Typography Refinement - The "Practical UI" Secret */
+        /* Nav Branding */
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.04em;
+            color: #0F172A;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-box {
+            border: 2px solid var(--brand-blue);
+            padding: 0px 4px;
+            border-radius: 4px;
+            margin-left: 4px;
+            font-size: 0.85rem;
+            color: var(--brand-blue);
+            font-weight: 800;
+        }
+
+        /* Precise Typography Scale */
         .hero-label {
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            font-weight: 500;
-            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            font-size: 0.7rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: block;
         }
 
         .hero-title {
-            font-size: 3.5rem; 
-            line-height: 1.05;
-            font-weight: 600; /* Reduced from 700 to match the clean aesthetic */
-            letter-spacing: -0.04em; /* Very tight tracking */
-            margin-bottom: 1.5rem;
-            max-width: 14ch;
-            color: #111827;
+            font-size: 4rem; 
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -0.045em;
+            margin-bottom: 1.25rem;
+            max-width: 12ch;
+            color: #0F172A;
         }
 
         .hero-description {
-            font-size: 1.125rem;
-            line-height: 1.6;
+            font-size: 1.2rem;
+            line-height: 1.5;
             font-weight: 400;
-            color: #4b5563;
-            max-width: 460px;
+            color: #475569;
+            max-width: 440px;
             margin-bottom: 2.5rem;
         }
 
@@ -65,18 +85,17 @@
         .btn-primary {
             background-color: var(--brand-blue);
             color: white;
-            padding: 0.75rem 1.75rem;
+            padding: 0.85rem 1.75rem;
             border-radius: 6px;
             font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(59, 73, 223, 0.15);
         }
 
         .btn-secondary {
-            border: 1px solid #d1d5db;
+            border: 1px solid #E2E8F0;
             color: var(--brand-blue);
-            padding: 0.75rem 1.75rem;
+            padding: 0.85rem 1.75rem;
             border-radius: 6px;
             font-weight: 600;
             font-size: 0.95rem;
@@ -86,111 +105,113 @@
         }
 
         .btn-secondary:hover {
-            background: #f9fafb;
-            border-color: #caced3;
+            background: #F8FAFC;
         }
 
-        /* Nav Logo */
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.4rem;
-            letter-spacing: -0.03em;
-            color: #111827;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-box {
-            border: 2px solid var(--brand-blue);
-            padding: 1px 5px;
-            border-radius: 4px;
-            margin-left: 5px;
-            font-size: 0.9rem;
-            color: var(--brand-blue);
-        }
-
-        /* Dashboard Illustration */
-        .dashboard-mockup {
-            background: white;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
-            width: 580px;
-            height: 420px;
-            overflow: hidden;
+        /* Dashboard Illustration - Rebuilt for High Fidelity */
+        .dashboard-container {
             position: relative;
-            transform: perspective(1000px) rotateY(-5deg);
+            perspective: 1200px;
         }
 
-        .dash-header {
-            height: 48px;
-            border-bottom: 1px solid #f3f4f6;
-            padding: 0 16px;
+        .dashboard-window {
+            background: #FFFFFF;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.06), 0 30px 60px -30px rgba(0,0,0,0.1);
+            width: 620px;
+            height: 440px;
+            overflow: hidden;
+            transform: rotateY(-8deg) rotateX(2deg);
+        }
+
+        .window-header {
+            height: 52px;
+            border-bottom: 1px solid #F1F5F9;
+            background: #FAFBFC;
             display: flex;
             align-items: center;
+            padding: 0 20px;
             justify-content: space-between;
         }
 
-        .dash-content {
+        .window-sidebar {
+            width: 180px;
+            border-right: 1px solid #F1F5F9;
+            height: calc(100% - 52px);
+            padding: 20px;
+            background: #FAFBFC;
+        }
+
+        .window-main {
+            flex: 1;
             padding: 24px;
         }
 
-        .dash-row {
+        /* Dashboard Internal Elements */
+        .item-row {
             display: flex;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #f9fafb;
+            padding: 12px 16px;
+            background: white;
+            border: 1px solid #F1F5F9;
+            border-radius: 8px;
+            margin-bottom: 8px;
         }
 
-        .dash-circle {
+        .dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 12px; }
+        .dot-blue { background: var(--brand-blue); }
+        .dot-gray { background: #CBD5E1; }
+
+        .line-sm { height: 6px; border-radius: 3px; background: #F1F5F9; }
+
+        .floating-stat {
+            position: absolute;
+            bottom: -30px;
+            right: 40px;
+            background: var(--brand-blue);
+            color: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(59, 73, 223, 0.3);
+            width: 220px;
+            z-index: 20;
+        }
+
+        .stat-icon {
             width: 32px;
             height: 32px;
+            background: rgba(255,255,255,0.2);
             border-radius: 8px;
-            background: #f3f4f6;
-            margin-right: 12px;
+            margin-bottom: 12px;
         }
 
-        .dash-line {
-            height: 8px;
-            background: #f3f4f6;
-            border-radius: 4px;
-        }
-
-        .status-pill {
-            padding: 4px 8px;
-            border-radius: 9999px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            background: #eef2ff;
-            color: var(--brand-blue);
-        }
     </style>
 </head>
 <body>
 
-    <header class="max-w-7xl mx-auto px-16 py-10 flex justify-between items-center">
+    <header class="max-w-7xl mx-auto px-12 py-10 flex justify-between items-center relative z-50">
         <div class="logo-text">
-            Practical<span class="logo-box">BT</span>
+            IronByte<span class="logo-box">BT</span>
         </div>
-        <nav class="flex items-center space-x-10 text-[0.9rem] font-medium text-gray-500">
+        <nav class="flex items-center space-x-8 text-[0.925rem] font-medium text-slate-500">
             <a href="#" class="hover:text-black transition-colors">Services</a>
             <a href="#" class="hover:text-black transition-colors">Solutions</a>
-            <a href="#" class="hover:text-black transition-colors">Pricing</a>
-            <a href="#" class="text-black font-semibold">Contact</a>
+            <a href="#" class="hover:text-black transition-colors">Work</a>
+            <a href="#" class="text-slate-900 font-semibold bg-white px-4 py-2 rounded-lg border border-slate-100 shadow-sm">Contact</a>
         </nav>
     </header>
 
-    <main class="max-w-7xl mx-auto px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-[calc(100vh-160px)]">
+    <main class="max-w-7xl mx-auto px-12 grid grid-cols-1 lg:grid-cols-2 gap-0 items-center h-[calc(100vh-160px)]">
         
         <!-- Content Left -->
-        <div class="z-10">
+        <div class="relative z-10 -mt-10">
             <span class="hero-label">Custom Software Studio</span>
             <h1 class="hero-title">
                 Digital tools for growing teams.
             </h1>
             <p class="hero-description">
-                Design and build intuitive inventory systems and powerful web applications using logic-driven design principles.
+                Design and build intuitive inventory systems and powerful web applications using logic-driven design.
             </p>
             <div class="flex items-center">
                 <a href="#" class="btn-primary">View services</a>
@@ -198,65 +219,74 @@
             </div>
         </div>
 
-        <!-- Dashboard Illustration Right -->
-        <div class="flex justify-end">
-            <div class="dashboard-mockup">
-                <div class="dash-header">
-                    <div class="flex space-x-2">
-                        <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
-                        <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
-                        <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+        <!-- Illustration Right -->
+        <div class="dashboard-container flex justify-end">
+            <div class="dashboard-window flex flex-wrap">
+                <!-- Header -->
+                <div class="window-header w-full">
+                    <div class="flex space-x-1.5">
+                        <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
                     </div>
-                    <div class="w-24 h-2 bg-gray-100 rounded-full"></div>
+                    <div class="h-2 w-32 bg-slate-100 rounded-full"></div>
                 </div>
-                <div class="dash-content">
-                    <div class="flex justify-between items-end mb-8">
-                        <div>
-                            <div class="h-3 w-32 bg-gray-200 rounded-full mb-2"></div>
-                            <div class="h-6 w-16 bg-gray-100 rounded-full"></div>
+
+                <!-- Sidebar -->
+                <div class="window-sidebar">
+                    <div class="space-y-4">
+                        <div class="h-2 w-full bg-slate-200/50 rounded"></div>
+                        <div class="h-2 w-3/4 bg-slate-100 rounded"></div>
+                        <div class="pt-4 space-y-3">
+                            <div class="h-1.5 w-1/2 bg-blue-100 rounded"></div>
+                            <div class="h-1.5 w-2/3 bg-slate-100 rounded"></div>
                         </div>
-                        <div class="flex space-x-2">
-                            <div class="w-8 h-8 rounded bg-blue-50"></div>
-                            <div class="w-8 h-8 rounded bg-gray-50"></div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="window-main">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="h-4 w-24 bg-slate-200 rounded"></div>
+                        <div class="h-8 w-8 bg-slate-50 rounded-lg"></div>
+                    </div>
+                    
+                    <div class="item-row">
+                        <div class="dot dot-blue"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="line-sm w-32"></div>
+                            <div class="line-sm w-16 opacity-40"></div>
                         </div>
+                        <div class="h-4 w-12 bg-blue-50 rounded"></div>
                     </div>
 
-                    <!-- Inventory List -->
-                    <div class="space-y-1">
-                        <div class="dash-row">
-                            <div class="dash-circle"></div>
-                            <div class="flex-1">
-                                <div class="dash-line w-24 mb-2"></div>
-                                <div class="dash-line w-12 opacity-50"></div>
-                            </div>
-                            <div class="status-pill">In Stock</div>
+                    <div class="item-row">
+                        <div class="dot dot-gray"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="line-sm w-40"></div>
+                            <div class="line-sm w-20 opacity-40"></div>
                         </div>
-                        <div class="dash-row">
-                            <div class="dash-circle"></div>
-                            <div class="flex-1">
-                                <div class="dash-line w-32 mb-2"></div>
-                                <div class="dash-line w-16 opacity-50"></div>
-                            </div>
-                            <div class="status-pill">In Stock</div>
+                        <div class="h-4 w-12 bg-slate-50 rounded"></div>
+                    </div>
+
+                    <div class="item-row">
+                        <div class="dot dot-gray"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="line-sm w-24"></div>
+                            <div class="line-sm w-12 opacity-40"></div>
                         </div>
-                        <div class="dash-row">
-                            <div class="dash-circle" style="background: #eef2ff"></div>
-                            <div class="flex-1">
-                                <div class="dash-line w-20 mb-2" style="background: var(--brand-blue); opacity: 0.2"></div>
-                                <div class="dash-line w-28 opacity-50"></div>
-                            </div>
-                            <div class="status-pill" style="background: #fee2e2; color: #ef4444">Low Stock</div>
-                        </div>
+                        <div class="h-4 w-12 bg-slate-50 rounded"></div>
                     </div>
                 </div>
-                
-                <!-- Floating Blue Card Detail -->
-                <div class="absolute bottom-6 right-6 w-48 h-32 bg-brand-blue rounded-xl shadow-2xl p-4 flex flex-col justify-between" style="background-color: var(--brand-blue);">
-                    <div class="w-8 h-8 rounded-lg bg-white/20"></div>
-                    <div>
-                        <div class="text-[10px] text-white/60 font-bold uppercase tracking-widest mb-1">Total Assets</div>
-                        <div class="text-xl text-white font-bold tracking-tight">$42,080</div>
-                    </div>
+            </div>
+
+            <!-- Floating Stat Card -->
+            <div class="floating-stat">
+                <div class="stat-icon"></div>
+                <div class="text-[0.65rem] font-bold uppercase tracking-widest text-white/60 mb-1">Stock Valuation</div>
+                <div class="text-2xl font-bold tracking-tight">$42,080.00</div>
+                <div class="mt-4 h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                    <div class="h-full bg-white w-2/3"></div>
                 </div>
             </div>
         </div>
