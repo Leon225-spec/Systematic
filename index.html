@@ -20,7 +20,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-warm);
-            /* Refined grid background */
+            /* Refined grid background - matches Practical UI structure */
             background-image: 
                 linear-gradient(var(--grid-line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
@@ -51,56 +51,62 @@
             font-weight: 800;
         }
 
-        /* Precise Typography Scale */
+        /* Precise Typography Scale - Centered */
         .hero-label {
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.15em;
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             display: block;
+            text-align: center;
         }
 
         .hero-title {
-            font-size: 4rem; 
-            line-height: 1;
+            font-size: 4.5rem; 
+            line-height: 1.05;
             font-weight: 700;
-            letter-spacing: -0.045em;
-            margin-bottom: 1.25rem;
-            max-width: 12ch;
+            letter-spacing: -0.05em;
+            margin-bottom: 1.5rem;
+            max-width: 15ch;
             color: #0F172A;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-description {
-            font-size: 1.2rem;
-            line-height: 1.5;
+            font-size: 1.25rem;
+            line-height: 1.6;
             font-weight: 400;
             color: #475569;
-            max-width: 440px;
-            margin-bottom: 2.5rem;
+            max-width: 580px;
+            margin-bottom: 3rem;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Buttons */
         .btn-primary {
             background-color: var(--brand-blue);
             color: white;
-            padding: 0.85rem 1.75rem;
-            border-radius: 6px;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: all 0.2s;
         }
 
         .btn-secondary {
             border: 1px solid #E2E8F0;
             color: var(--brand-blue);
-            padding: 0.85rem 1.75rem;
-            border-radius: 6px;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             background: white;
-            margin-left: 0.75rem;
             transition: all 0.2s;
         }
 
@@ -108,82 +114,20 @@
             background: #F8FAFC;
         }
 
-        /* Dashboard Illustration - Rebuilt for High Fidelity */
-        .dashboard-container {
-            position: relative;
-            perspective: 1200px;
-        }
-
-        .dashboard-window {
-            background: #FFFFFF;
-            border-radius: 12px;
-            border: 1px solid #E2E8F0;
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.06), 0 30px 60px -30px rgba(0,0,0,0.1);
-            width: 620px;
-            height: 440px;
-            overflow: hidden;
-            transform: rotateY(-8deg) rotateX(2deg);
-        }
-
-        .window-header {
-            height: 52px;
-            border-bottom: 1px solid #F1F5F9;
-            background: #FAFBFC;
+        .button-group {
             display: flex;
-            align-items: center;
-            padding: 0 20px;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 1rem;
         }
 
-        .window-sidebar {
-            width: 180px;
-            border-right: 1px solid #F1F5F9;
-            height: calc(100% - 52px);
-            padding: 20px;
-            background: #FAFBFC;
-        }
-
-        .window-main {
-            flex: 1;
-            padding: 24px;
-        }
-
-        /* Dashboard Internal Elements */
-        .item-row {
+        /* Section Container */
+        .hero-container {
+            height: calc(100vh - 120px);
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 12px 16px;
-            background: white;
-            border: 1px solid #F1F5F9;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-
-        .dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 12px; }
-        .dot-blue { background: var(--brand-blue); }
-        .dot-gray { background: #CBD5E1; }
-
-        .line-sm { height: 6px; border-radius: 3px; background: #F1F5F9; }
-
-        .floating-stat {
-            position: absolute;
-            bottom: -30px;
-            right: 40px;
-            background: var(--brand-blue);
-            color: white;
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(59, 73, 223, 0.3);
-            width: 220px;
-            z-index: 20;
-        }
-
-        .stat-icon {
-            width: 32px;
-            height: 32px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 8px;
-            margin-bottom: 12px;
+            padding-bottom: 5vh;
         }
 
     </style>
@@ -194,103 +138,28 @@
         <div class="logo-text">
             IronByte<span class="logo-box">BT</span>
         </div>
-        <nav class="flex items-center space-x-8 text-[0.925rem] font-medium text-slate-500">
+        <nav class="flex items-center space-x-10 text-[0.95rem] font-medium text-slate-500">
             <a href="#" class="hover:text-black transition-colors">Services</a>
             <a href="#" class="hover:text-black transition-colors">Solutions</a>
             <a href="#" class="hover:text-black transition-colors">Work</a>
-            <a href="#" class="text-slate-900 font-semibold bg-white px-4 py-2 rounded-lg border border-slate-100 shadow-sm">Contact</a>
+            <a href="#" class="text-slate-900 font-semibold border-b-2 border-brand-blue pb-0.5">Contact</a>
         </nav>
     </header>
 
-    <main class="max-w-7xl mx-auto px-12 grid grid-cols-1 lg:grid-cols-2 gap-0 items-center h-[calc(100vh-160px)]">
-        
-        <!-- Content Left -->
-        <div class="relative z-10 -mt-10">
+    <main class="max-w-7xl mx-auto px-12">
+        <section class="hero-container">
             <span class="hero-label">Custom Software Studio</span>
             <h1 class="hero-title">
                 Digital tools for growing teams.
             </h1>
             <p class="hero-description">
-                Design and build intuitive inventory systems and powerful web applications using logic-driven design.
+                We design and build intuitive inventory systems and powerful web applications using logic-driven design principles.
             </p>
-            <div class="flex items-center">
-                <a href="#" class="btn-primary">View services</a>
+            <div class="button-group">
+                <a href="#" class="btn-primary">View our services</a>
                 <a href="#" class="btn-secondary">Free preview</a>
             </div>
-        </div>
-
-        <!-- Illustration Right -->
-        <div class="dashboard-container flex justify-end">
-            <div class="dashboard-window flex flex-wrap">
-                <!-- Header -->
-                <div class="window-header w-full">
-                    <div class="flex space-x-1.5">
-                        <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
-                        <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
-                        <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
-                    </div>
-                    <div class="h-2 w-32 bg-slate-100 rounded-full"></div>
-                </div>
-
-                <!-- Sidebar -->
-                <div class="window-sidebar">
-                    <div class="space-y-4">
-                        <div class="h-2 w-full bg-slate-200/50 rounded"></div>
-                        <div class="h-2 w-3/4 bg-slate-100 rounded"></div>
-                        <div class="pt-4 space-y-3">
-                            <div class="h-1.5 w-1/2 bg-blue-100 rounded"></div>
-                            <div class="h-1.5 w-2/3 bg-slate-100 rounded"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Main Content -->
-                <div class="window-main">
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="h-4 w-24 bg-slate-200 rounded"></div>
-                        <div class="h-8 w-8 bg-slate-50 rounded-lg"></div>
-                    </div>
-                    
-                    <div class="item-row">
-                        <div class="dot dot-blue"></div>
-                        <div class="flex-1 space-y-2">
-                            <div class="line-sm w-32"></div>
-                            <div class="line-sm w-16 opacity-40"></div>
-                        </div>
-                        <div class="h-4 w-12 bg-blue-50 rounded"></div>
-                    </div>
-
-                    <div class="item-row">
-                        <div class="dot dot-gray"></div>
-                        <div class="flex-1 space-y-2">
-                            <div class="line-sm w-40"></div>
-                            <div class="line-sm w-20 opacity-40"></div>
-                        </div>
-                        <div class="h-4 w-12 bg-slate-50 rounded"></div>
-                    </div>
-
-                    <div class="item-row">
-                        <div class="dot dot-gray"></div>
-                        <div class="flex-1 space-y-2">
-                            <div class="line-sm w-24"></div>
-                            <div class="line-sm w-12 opacity-40"></div>
-                        </div>
-                        <div class="h-4 w-12 bg-slate-50 rounded"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Floating Stat Card -->
-            <div class="floating-stat">
-                <div class="stat-icon"></div>
-                <div class="text-[0.65rem] font-bold uppercase tracking-widest text-white/60 mb-1">Stock Valuation</div>
-                <div class="text-2xl font-bold tracking-tight">$42,080.00</div>
-                <div class="mt-4 h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                    <div class="h-full bg-white w-2/3"></div>
-                </div>
-            </div>
-        </div>
-
+        </section>
     </main>
 
 </body>
