@@ -13,7 +13,7 @@
             --brand-blue: #3B49DF;
             --text-main: #1A1C1E;
             --text-muted: #636D7A;
-            --bg-warm: #F7F7F5; /* Refined warm gray */
+            --bg-warm: #F8F8F6; /* Slightly warmer gray to match Practical UI background */
         }
 
         body {
@@ -21,16 +21,22 @@
             background-color: var(--bg-warm);
             color: var(--text-main);
             margin: 0;
-            overflow: hidden;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container - Increased max-width for that "wide" Nav feel */
+        .container-wide {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 4rem;
         }
 
         /* Nav Branding */
         .logo-text {
             font-weight: 700;
             font-size: 1.5rem;
-            letter-spacing: -0.04em;
-            color: #0F172A;
+            letter-spacing: -0.05em;
+            color: #1A1C1E;
             display: flex;
             align-items: center;
         }
@@ -45,59 +51,66 @@
             font-weight: 800;
         }
 
-        /* Precise Typography Scale - Centered */
-        .hero-label {
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            font-weight: 600;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            display: block;
+        /* 80vh Hero Container */
+        .hero-section {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
+        /* Typography - Practical UI Precision */
+        .hero-label {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
         .hero-title {
-            font-size: 4.5rem; 
-            line-height: 1.05;
+            font-size: 4.8rem; /* Slightly larger to dominate the 80vh space */
+            line-height: 1.02;
             font-weight: 700;
-            letter-spacing: -0.05em;
+            letter-spacing: -0.055em;
             margin-bottom: 1.5rem;
-            max-width: 15ch;
-            color: #0F172A;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 14ch;
+            color: #1A1C1E;
         }
 
         .hero-description {
             font-size: 1.25rem;
             line-height: 1.6;
             font-weight: 400;
-            color: #475569;
-            max-width: 580px;
-            margin-bottom: 3rem;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
+            color: #4B5563;
+            max-width: 540px;
+            margin-bottom: 2.75rem;
         }
 
-        /* Buttons */
+        /* Buttons - Matching the specific padding and radius */
         .btn-primary {
             background-color: var(--brand-blue);
             color: white;
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
+            padding: 0.95rem 2.25rem;
+            border-radius: 6px;
             font-weight: 600;
             font-size: 1rem;
-            transition: all 0.2s;
+            transition: transform 0.1s ease;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
         }
 
         .btn-secondary {
-            border: 1px solid #E2E8F0;
-            color: var(--brand-blue);
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
+            border: 1px solid #D1D5DB;
+            color: #374151;
+            padding: 0.95rem 2.25rem;
+            border-radius: 6px;
             font-weight: 600;
             font-size: 1rem;
             background: white;
@@ -105,43 +118,43 @@
         }
 
         .btn-secondary:hover {
-            background: #F8FAFC;
+            background: #F9FAFB;
+            border-color: #C1C7D0;
         }
 
         .button-group {
             display: flex;
-            justify-content: center;
             gap: 1rem;
         }
 
-        /* Section Container */
-        .hero-container {
-            height: calc(100vh - 120px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 5vh;
+        /* Nav hover state consistency */
+        .nav-link {
+            transition: color 0.2s;
+            color: #4B5563;
+        }
+
+        .nav-link:hover {
+            color: #111827;
         }
 
     </style>
 </head>
 <body>
 
-    <header class="max-w-7xl mx-auto px-12 py-10 flex justify-between items-center relative z-50">
+    <header class="container-wide py-10 flex justify-between items-center">
         <div class="logo-text">
             IronByte<span class="logo-box">BT</span>
         </div>
-        <nav class="flex items-center space-x-10 text-[0.95rem] font-medium text-slate-500">
-            <a href="#" class="hover:text-black transition-colors">Services</a>
-            <a href="#" class="hover:text-black transition-colors">Solutions</a>
-            <a href="#" class="hover:text-black transition-colors">Work</a>
-            <a href="#" class="text-slate-900 font-semibold border-b-2 border-brand-blue pb-0.5">Contact</a>
+        <nav class="flex items-center space-x-12 text-[0.95rem] font-medium">
+            <a href="#" class="nav-link">Services</a>
+            <a href="#" class="nav-link">Solutions</a>
+            <a href="#" class="nav-link">Work</a>
+            <a href="#" class="text-slate-900 font-bold border-b-2 border-brand-blue pb-0.5 ml-4">Contact</a>
         </nav>
     </header>
 
-    <main class="max-w-7xl mx-auto px-12">
-        <section class="hero-container">
+    <main class="container-wide">
+        <section class="hero-section">
             <span class="hero-label">Custom Software Studio</span>
             <h1 class="hero-title">
                 Digital tools for growing teams.
