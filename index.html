@@ -3,171 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IronByte | Custom Software Studio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>About | ironbyte Systems</title>
+    <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --brand-blue: #3B49DF;
-            --text-main: #1A1C1E;
-            --text-muted: #636D7A;
-            --bg-warm: #F8F8F6; /* Slightly warmer gray to match Practical UI background */
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gray: {
+                            50: '#fafafa',
+                            100: '#f5f5f5',
+                            200: '#eaeaea',
+                            300: '#d9d9d9',
+                            400: '#888888',
+                            500: '#666666',
+                            600: '#444444',
+                            900: '#111111',
+                        }
+                    }
+                }
+            }
         }
-
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-warm);
-            color: var(--text-main);
-            margin: 0;
             -webkit-font-smoothing: antialiased;
+            background-color: #ffffff;
         }
-
-        /* Container - Increased max-width for that "wide" Nav feel */
-        .container-wide {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 4rem;
-        }
-
-        /* Nav Branding */
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -0.05em;
-            color: #1A1C1E;
-            display: flex;
-            align-items: center;
-        }
+        .tracking-tight { letter-spacing: -0.02em; }
+        .tracking-tighter { letter-spacing: -0.04em; }
         
-        .logo-box {
-            border: 2px solid var(--brand-blue);
-            padding: 0px 4px;
-            border-radius: 4px;
-            margin-left: 4px;
-            font-size: 0.85rem;
-            color: var(--brand-blue);
-            font-weight: 800;
+        .tech-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 4rem 4rem;
+            mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+            z-index: 0;
+            pointer-events: none;
         }
 
-        /* 80vh Hero Container */
-        .hero-section {
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+        /* Logo Layers */
+        .logo-stack { position: relative; width: 20px; height: 20px; }
+        .logo-layer-1 { position: absolute; inset: 0; background: #111; border-radius: 2px; transform: translateY(-3px); }
+        .logo-layer-2 { position: absolute; inset: 0; background: #888; border-radius: 2px; transform: translateY(3px); opacity: 0.5; }
+        .logo-layer-3 { position: absolute; inset: 0; background: #eaeaea; border-radius: 2px; transform: translateY(6px); opacity: 0.3; }
 
-        /* Typography - Practical UI Precision */
-        .hero-label {
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-            display: block;
+        .gradient-text {
+            background: linear-gradient(to bottom right, #111 0%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .hero-title {
-            font-size: 4.8rem; /* Slightly larger to dominate the 80vh space */
-            line-height: 1.02;
-            font-weight: 700;
-            letter-spacing: -0.055em;
-            margin-bottom: 1.5rem;
-            max-width: 14ch;
-            color: #1A1C1E;
-        }
-
-        .hero-description {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            font-weight: 400;
-            color: #4B5563;
-            max-width: 540px;
-            margin-bottom: 2.75rem;
-        }
-
-        /* Buttons - Matching the specific padding and radius */
-        .btn-primary {
-            background-color: var(--brand-blue);
-            color: white;
-            padding: 0.95rem 2.25rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: transform 0.1s ease;
-        }
-
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
-
-        .btn-secondary {
-            border: 1px solid #D1D5DB;
-            color: #374151;
-            padding: 0.95rem 2.25rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            background: white;
-            transition: all 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background: #F9FAFB;
-            border-color: #C1C7D0;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 1rem;
-        }
-
-        /* Nav hover state consistency */
-        .nav-link {
-            transition: color 0.2s;
-            color: #4B5563;
-        }
-
-        .nav-link:hover {
-            color: #111827;
-        }
-
     </style>
 </head>
-<body>
+<body class="text-gray-900 selection:bg-gray-900 selection:text-white tracking-tight">
 
-    <header class="container-wide py-10 flex justify-between items-center">
-        <div class="logo-text">
-            IronByte<span class="logo-box">BT</span>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-1 group">
+                <div class="logo-stack scale-[0.85] origin-left">
+                    <div class="logo-layer-1"></div>
+                    <div class="logo-layer-2"></div>
+                    <div class="logo-layer-3"></div>
+                </div>
+                <span class="text-[17px] font-bold tracking-tighter text-gray-900 -ml-0.5">ironbyte</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-[13px] font-medium text-gray-500 hover:text-gray-900 transition-colors">Home</a>
+                <a href="#story" class="text-[13px] font-medium text-gray-500 hover:text-gray-900 transition-colors">Story</a>
+                <a href="#philosophy" class="text-[13px] font-medium text-gray-500 hover:text-gray-900 transition-colors">Philosophy</a>
+                <a href="index.html#contact" class="bg-gray-900 text-white px-5 py-1.5 rounded-full text-[13px] font-medium hover:bg-black transition-all">Contact</a>
+            </div>
         </div>
-        <nav class="flex items-center space-x-12 text-[0.95rem] font-medium">
-            <a href="#" class="nav-link">Services</a>
-            <a href="#" class="nav-link">Solutions</a>
-            <a href="#" class="nav-link">Work</a>
-            <a href="#" class="text-slate-900 font-bold border-b-2 border-brand-blue pb-0.5 ml-4">Contact</a>
-        </nav>
+    </nav>
+
+    <!-- Header / Intro -->
+    <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden border-b border-gray-100">
+        <div class="tech-grid"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-6 block">About ironbyte</span>
+            <h1 class="text-4xl md:text-6xl font-semibold tracking-tighter mb-8 gradient-text">
+                Engineering clarity into <br class="hidden md:block" /> operational chaos.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
+                ironbyte Systems is a software studio focused on building practical tools that help businesses operate more efficiently. We solve real problems for the people who keep the world moving.
+            </p>
+        </div>
     </header>
 
-    <main class="container-wide">
-        <section class="hero-section">
-            <span class="hero-label">Custom Software Studio</span>
-            <h1 class="hero-title">
-                Digital tools for growing teams.
-            </h1>
-            <p class="hero-description">
-                We design and build intuitive inventory systems and powerful web applications using logic-driven design principles.
-            </p>
-            <div class="button-group">
-                <a href="#" class="btn-primary">View our services</a>
-                <a href="#" class="btn-secondary">Free preview</a>
+    <!-- Founder Story -->
+    <section id="story" class="py-24 px-6 md:px-16 lg:px-20 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                <div class="md:col-span-5">
+                    <h2 class="text-2xl md:text-3xl font-semibold tracking-tighter mb-6">Born from the warehouse floor.</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                            <p class="text-sm font-medium text-gray-900">Founder & Lead Engineer</p>
+                            <p class="text-sm text-gray-500">Leon Nyaramb</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 text-gray-600 space-y-6 leading-relaxed text-[16px]">
+                    <p>
+                        The idea for ironbyte Systems didn't start in a boardroom—it started in a messy warehouse. Our founder, Leon Nyaramb, developed the core concept for DispatchMate while working directly inside a business where operations were entirely manual and dependent on memory.
+                    </p>
+                    <p>
+                        He saw the friction daily: staff searching through stacks of boxes, workers struggling to recall specific product codes, and the sheer volume of time wasted looking for items that should have been easy to find. There was no visibility, and scaling felt like a nightmare.
+                    </p>
+                    <p class="font-medium text-gray-900 italic">
+                        "I realized that the biggest bottleneck for growth wasn't a lack of effort, but a lack of infrastructure. We were relying on human memory for things software should handle in milliseconds."
+                    </p>
+                    <p>
+                        This experience inspired a shift. Leon began building software designed not just for managers, but for the workers on the floor—turning confusion into structured, intelligent workflows.
+                    </p>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Mission & Philosophy -->
+    <section id="philosophy" class="py-24 px-6 md:px-16 lg:px-20 bg-[#fafafa] border-y border-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">Our Mission</h3>
+                    <p class="text-2xl font-medium tracking-tight text-gray-900 leading-snug">
+                        To build simple, intelligent software that helps businesses operate with greater clarity, efficiency, and confidence.
+                    </p>
+                    <p class="mt-6 text-gray-500 leading-relaxed">
+                        We are dedicated to removing operational friction. We believe that when workers have better tools, businesses make better decisions.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">Our Philosophy</h3>
+                    <ul class="space-y-8">
+                        <li class="flex gap-4">
+                            <div class="mt-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-blue-500"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Real-World First</h4>
+                                <p class="text-sm text-gray-500 mt-1">We build based on actual friction, not theoretical problems.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="mt-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-blue-500"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Clarity over Complexity</h4>
+                                <p class="text-sm text-gray-500 mt-1">If it needs a 50-page manual, it's built wrong. We prioritize usability.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="mt-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-blue-500"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Supportive Design</h4>
+                                <p class="text-sm text-gray-500 mt-1">Software should support workers, not overwhelm or replace them.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Goals & Vision -->
+    <section class="py-24 px-6 md:px-16 lg:px-20 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-semibold tracking-tighter mb-8 text-gray-900">The Road Ahead</h2>
+            <p class="text-gray-600 mb-12 text-lg leading-relaxed">
+                We are currently scaling DispatchMate—our smart operational assistant. But this is just the beginning. Our vision is to create a complete suite of operational intelligence tools that help businesses run smoother every single day.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="p-6 border border-gray-100 rounded-2xl bg-white shadow-sm">
+                    <div class="w-8 h-8 bg-gray-50 rounded flex items-center justify-center mb-4 text-gray-900 font-bold">1</div>
+                    <h5 class="font-semibold mb-2">Structure</h5>
+                    <p class="text-sm text-gray-500">Helping businesses organize their inventory and knowledge bases.</p>
+                </div>
+                <div class="p-6 border border-gray-100 rounded-2xl bg-white shadow-sm">
+                    <div class="w-8 h-8 bg-gray-50 rounded flex items-center justify-center mb-4 text-gray-900 font-bold">2</div>
+                    <h5 class="font-semibold mb-2">Simplicity</h5>
+                    <p class="text-sm text-gray-500">Developing more tools that cut out the "noise" of manual work.</p>
+                </div>
+                <div class="p-6 border border-gray-100 rounded-2xl bg-white shadow-sm">
+                    <div class="w-8 h-8 bg-gray-50 rounded flex items-center justify-center mb-4 text-gray-900 font-bold">3</div>
+                    <h5 class="font-semibold mb-2">Scale</h5>
+                    <p class="text-sm text-gray-500">Expanding our reach to businesses across various global industries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing & CTA -->
+    <section class="py-24 px-6 border-t border-gray-100 bg-white relative overflow-hidden">
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <p class="text-xl md:text-2xl font-medium tracking-tight text-gray-900 mb-10 leading-relaxed italic">
+                "Great software should not complicate work. It should make work clearer, faster, and more confident for the people using it every day."
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="index.html#contact" class="bg-gray-900 text-white px-8 py-3.5 rounded-full font-medium text-sm hover:bg-black transition-all">
+                    Start Your Journey
+                </a>
+                <a href="index.html" class="text-gray-500 hover:text-gray-900 font-medium text-sm transition-colors">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-gray-100 bg-white px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-1.5">
+                <div class="logo-stack scale-75 origin-left">
+                    <div class="logo-layer-1"></div>
+                    <div class="logo-layer-2"></div>
+                    <div class="logo-layer-3"></div>
+                </div>
+                <span class="text-[15px] font-semibold tracking-tight text-gray-900">ironbyte Inc.</span>
+            </div>
+            <div class="text-gray-400 text-[12px]">© 2024 ironbyte Systems. Operational Excellence for All.</div>
+        </div>
+    </footer>
 
 </body>
 </html>
+
