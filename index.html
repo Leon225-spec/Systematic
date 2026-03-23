@@ -7,131 +7,156 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        slate: {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Extremely faint grid to keep a structured feel, but much softer than before */
-        .bg-grid-pattern {
-            background-image: 
-                linear-gradient(to right, rgba(15, 23, 42, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
-            background-size: 32px 32px;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            /* Prevents scrollbar jumping */
+            overflow-y: scroll; 
+        }
+
+        /* Custom typography utilities for a premium feel */
+        .tracking-ultra-tight { letter-spacing: -0.05em; }
+        .text-balance { text-wrap: balance; }
+
+        /* Smooth entrance animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0; /* Start hidden */
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+
+        /* Mobile Menu Transitions */
+        #mobileMenu {
+            transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+            transform-origin: top;
+        }
+        #mobileMenu.hidden-menu {
+            opacity: 0;
+            transform: scaleY(0.95);
+            pointer-events: none;
+        }
+        #mobileMenu.active-menu {
+            opacity: 1;
+            transform: scaleY(1);
+            pointer-events: auto;
         }
     </style>
 </head>
-<body class="bg-white text-slate-600 font-sans antialiased min-h-screen flex flex-col selection:bg-slate-200 selection:text-slate-900">
+<body class="text-[#0a0a0a] antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
 
-    <!-- Navbar -->
-    <header class="fixed top-0 inset-x-0 bg-white/90 backdrop-blur-md z-50 border-b border-slate-100">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <!-- Left: Simple Wordmark Logo -->
-            <a href="/" class="flex items-center gap-1 group">
-                <span class="text-[20px] font-bold text-slate-900 tracking-tight">ironbyte</span>
-                <span class="text-[20px] font-normal text-slate-400 tracking-tight">Systems</span>
+    <!-- Header / Navigation -->
+    <header class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-1.5 text-xl tracking-tight z-50">
+                <span class="font-bold text-black">ironbyte</span>
+                <span class="font-normal text-gray-400">Systems</span>
             </a>
 
-            <!-- Right: Desktop Navigation -->
-            <nav class="hidden md:flex items-center gap-8">
-                <a href="#dispatchmate" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">DispatchMate</a>
-                <a href="/about" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">About</a>
-                <a href="#contact" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Contact</a>
-                
-                <!-- Client Login Link (Minimal) -->
-                <a href="#login" class="ml-4 text-sm font-semibold text-slate-900 hover:text-slate-600 transition-colors">
-                    Client Login &rarr;
+            <!-- Desktop Nav (Hidden on Mobile) -->
+            <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-gray-500">
+                <a href="#" class="hover:text-black transition-colors">DispatchMate</a>
+                <a href="#" class="hover:text-black transition-colors">About</a>
+                <a href="#" class="hover:text-black transition-colors">Contact</a>
+                <a href="#" class="text-black flex items-center gap-1.5 hover:opacity-70 transition-opacity">
+                    Client Login <span aria-hidden="true" class="text-gray-400">&rarr;</span>
                 </a>
             </nav>
 
             <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 -mr-2 text-slate-500 hover:text-slate-900 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <button id="menuBtn" class="md:hidden p-2 -mr-2 text-black z-50 focus:outline-none" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
             </button>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-6 py-4 space-y-4">
-            <a href="#dispatchmate" class="block text-base font-medium text-slate-600">DispatchMate</a>
-            <a href="/about" class="block text-base font-medium text-slate-600">About</a>
-            <a href="#contact" class="block text-base font-medium text-slate-600">Contact</a>
-            <a href="#login" class="block pt-2 text-base font-semibold text-slate-900">Client Login &rarr;</a>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="absolute top-0 left-0 w-full h-screen bg-white pt-20 px-6 hidden-menu md:hidden">
+            <div class="flex flex-col gap-6 text-2xl font-semibold tracking-tight">
+                <a href="#" class="text-black block pb-4 border-b border-gray-100">DispatchMate</a>
+                <a href="#" class="text-gray-400 hover:text-black transition-colors block pb-4 border-b border-gray-100">About</a>
+                <a href="#" class="text-gray-400 hover:text-black transition-colors block pb-4 border-b border-gray-100">Contact</a>
+                <a href="#" class="text-black block pt-2 flex items-center justify-between">
+                    Client Login <span class="text-gray-300">&rarr;</span>
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Main Hero Section -->
-    <main class="flex-grow flex flex-col justify-center relative pt-24 pb-16">
-        <!-- Subtle Background Grid -->
-        <div class="absolute inset-0 bg-grid-pattern opacity-100 pointer-events-none" style="mask-image: radial-gradient(ellipse at center top, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse at center top, black 10%, transparent 60%);"></div>
+    <main class="flex-grow flex flex-col items-center justify-center pt-32 pb-24 px-6 text-center">
+        <div class="max-w-3xl mx-auto flex flex-col items-center w-full">
 
-        <section class="w-full max-w-3xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
-            
-            <!-- Small Pill Tag for DispatchMate -->
-            <a href="#dispatchmate" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-[13px] font-medium text-slate-600 mb-8 hover:bg-slate-100 transition-colors cursor-pointer group">
-                <span class="flex h-2 w-2 relative">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-slate-600"></span>
+            <!-- Status Badge -->
+            <div class="animate-fade-up inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-gray-200 bg-gray-50/50 mb-8">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-gray-800"></span>
                 </span>
-                Currently building <span class="text-slate-900 font-semibold group-hover:underline decoration-slate-300 underline-offset-2">DispatchMate</span>
-            </a>
-            
-            <!-- Headline (Smoother, less bold, tightly tracked) -->
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-slate-900 leading-[1.15] tracking-tight mb-6">
-                Software built from real business problems.
+                <span class="text-[11px] font-semibold text-gray-500 tracking-wider uppercase">
+                    Currently building <span class="text-gray-900 ml-1">DispatchMate</span>
+                </span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="animate-fade-up delay-100 text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.05] font-extrabold tracking-ultra-tight text-[#050505] mb-6 text-balance">
+                Software built<br class="hidden sm:block"> from real business problems.
             </h1>
-            
-            <!-- Primary Subtext (Better line height and readability) -->
-            <p class="text-lg sm:text-[20px] text-slate-500 leading-relaxed max-w-2xl mx-auto mb-10">
-                <span class="font-medium text-slate-700">ironbyte Systems</span> creates practical tools that help businesses manage inventory, assist customers, and run operations with total clarity.
+
+            <!-- Subheadline -->
+            <p class="animate-fade-up delay-200 text-[1.1rem] sm:text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed mb-10 text-balance">
+                <strong class="text-gray-900 font-medium">ironbyte Systems</strong> creates practical tools that help businesses manage inventory, assist customers, and run operations with total clarity.
             </p>
 
-            <!-- Clean, Simple Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
-                <!-- Primary Button (Deep Black) -->
-                <a href="#dispatchmate" class="w-full sm:w-auto bg-slate-900 text-white px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+            <!-- Call to Action Buttons -->
+            <div class="animate-fade-up delay-300 w-full flex flex-col sm:flex-row items-center justify-center gap-3.5">
+                <a href="#" class="w-full sm:w-[220px] px-6 py-3.5 rounded-full bg-[#0a0a0a] text-white text-[15px] font-medium hover:bg-black hover:scale-[1.02] hover:shadow-lg hover:shadow-gray-200 transition-all duration-200 flex items-center justify-center">
                     View DispatchMate
                 </a>
-                
-                <!-- Secondary Button (Minimal Border) -->
-                <a href="#contact" class="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-slate-50 hover:border-slate-300 transition-colors">
+                <a href="#" class="w-full sm:w-[220px] px-6 py-3.5 rounded-full bg-white text-[#0a0a0a] text-[15px] font-medium border border-gray-200 hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 flex items-center justify-center">
                     Contact Us
                 </a>
             </div>
 
-        </section>
+        </div>
     </main>
 
+    <!-- Simple JS for Mobile Menu Toggle -->
     <script>
-        // Mobile menu toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        let isMenuOpen = false;
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                // Open menu
+                mobileMenu.classList.remove('hidden-menu');
+                mobileMenu.classList.add('active-menu');
+                // Change icon to close (X)
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                // Prevent scrolling on body
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Close menu
+                mobileMenu.classList.remove('active-menu');
+                mobileMenu.classList.add('hidden-menu');
+                // Change icon back to hamburger
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                // Restore scrolling
+                document.body.style.overflow = 'auto';
+            }
         });
     </script>
 </body>
