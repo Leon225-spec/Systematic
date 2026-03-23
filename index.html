@@ -22,10 +22,14 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        softBlack: '#0a0a0a',
+                        softBlack: '#000000', /* Darkened for higher contrast */
                         softGray: '#fafafa',
                         borderGray: '#eaeaea',
                         textGray: '#666666'
+                    },
+                    boxShadow: {
+                        'vercel-button': '0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)',
+                        'vercel-glow': '0 0 120px 40px rgba(0, 0, 0, 0.05)',
                     }
                 }
             }
@@ -33,23 +37,42 @@
     </script>
 
     <style>
-        /* Extremely subtle, widely spaced grid lines like Vercel */
+        /* Modern text balance for perfect headline wrapping */
+        .text-balance {
+            text-wrap: balance;
+        }
+
+        /* Extremely subtle, widely spaced grid lines */
         .tech-grid {
             position: absolute;
             inset: 0;
             z-index: -10;
-            background-size: 80px 80px;
+            background-size: 60px 60px; /* Slightly smaller grid */
             background-image: 
-                linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
-            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 60%);
-            mask-image: linear-gradient(to bottom, black 0%, transparent 60%);
+                linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
         }
 
-        /* Removed the heavy blob, kept selection sleek */
+        /* Vercel-esque soft glowing background orb */
+        .ambient-glow {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(144, 194, 255, 0.15) 0%, rgba(255, 180, 200, 0.1) 40%, rgba(255, 255, 255, 0) 70%);
+            z-index: -5;
+            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
         ::selection {
-            background-color: #0a0a0a;
-            color: white;
+            background-color: #000;
+            color: #fff;
         }
     </style>
 </head>
@@ -60,11 +83,11 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
             
             <!-- Left: Logo -->
-            <div class="flex items-center gap-2.5 cursor-pointer">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L22 20H2L12 2Z" fill="#0a0a0a"/>
+            <div class="flex items-center gap-2.5 cursor-pointer group">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="group-hover:scale-105 transition-transform duration-300">
+                    <path d="M12 2L22 20H2L12 2Z" fill="#000"/>
                 </svg>
-                <span class="font-semibold text-base tracking-[-0.03em]">ironbyte Systems</span>
+                <span class="font-bold text-[15px] tracking-tight">ironbyte Systems</span>
             </div>
 
             <!-- Right: Desktop Links -->
@@ -72,14 +95,14 @@
                 <a href="#dispatchmate" class="text-[14px] text-textGray hover:text-softBlack transition-colors font-medium">DispatchMate</a>
                 <a href="/about" class="text-[14px] text-textGray hover:text-softBlack transition-colors font-medium">About</a>
                 <!-- Refined smaller header button -->
-                <a href="#contact" class="text-[14px] font-medium bg-white text-softBlack border border-borderGray px-3 py-1.5 rounded-md hover:bg-softGray transition-colors shadow-sm tracking-tight">
+                <a href="#contact" class="text-[13px] font-medium bg-white text-softBlack border border-borderGray px-3 py-1.5 rounded-md hover:bg-softGray transition-colors shadow-sm tracking-tight">
                     Contact
                 </a>
             </nav>
 
             <!-- Mobile Menu Button -->
             <div class="md:hidden flex items-center gap-4">
-                <button id="mobile-menu-btn" class="p-1 text-softBlack focus:outline-none">
+                <button id="mobile-menu-btn" class="p-1 text-softBlack focus:outline-none hover:bg-softGray rounded-md transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -90,10 +113,10 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-14 left-0 w-full bg-white border-b border-borderGray shadow-sm">
             <div class="px-4 py-4 flex flex-col gap-4">
-                <a href="#dispatchmate" class="text-[15px] font-medium text-textGray hover:text-softBlack">DispatchMate</a>
-                <a href="/about" class="text-[15px] font-medium text-textGray hover:text-softBlack">About</a>
+                <a href="#dispatchmate" class="text-[14px] font-medium text-textGray hover:text-softBlack">DispatchMate</a>
+                <a href="/about" class="text-[14px] font-medium text-textGray hover:text-softBlack">About</a>
                 <div class="pt-3 mt-1 border-t border-borderGray">
-                    <a href="#contact" class="block text-center w-full text-[15px] font-medium bg-softBlack text-white px-4 py-2.5 rounded-md hover:bg-gray-800 transition-colors">
+                    <a href="#contact" class="block text-center w-full text-[14px] font-medium bg-softBlack text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors">
                         Contact
                     </a>
                 </div>
@@ -103,45 +126,46 @@
 
     <!-- Background Elements -->
     <div class="tech-grid"></div>
+    <div class="ambient-glow"></div>
 
     <!-- Main Hero Section -->
-    <main class="flex-grow flex flex-col pt-16 pb-24 sm:pt-24 sm:pb-32 overflow-hidden">
+    <main class="flex-grow flex flex-col pt-16 pb-24 sm:pt-28 sm:pb-32 overflow-hidden items-center justify-center">
         
         <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center relative z-10 w-full">
             
             <!-- Pill Tag for DispatchMate -->
-            <a href="#dispatchmate" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-borderGray bg-white shadow-sm mb-8 hover:bg-softGray transition-colors group cursor-pointer">
-                <span class="flex h-2 w-2 rounded-full bg-softBlack opacity-80 group-hover:opacity-100"></span>
+            <a href="#dispatchmate" class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-borderGray bg-white shadow-sm mb-6 hover:bg-softGray hover:shadow-md transition-all duration-300 group cursor-pointer">
+                <span class="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
                 <span class="text-[13px] font-medium text-textGray tracking-tight">
                     Currently building <span class="text-softBlack font-semibold">DispatchMate</span>
                 </span>
-                <svg class="w-3.5 h-3.5 text-textGray group-hover:text-softBlack transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3.5 h-3.5 text-textGray group-hover:text-softBlack group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
             </a>
 
             <!-- Headline -->
-            <h1 class="text-[36px] sm:text-[48px] md:text-[56px] font-bold tracking-[-0.05em] leading-[1.05] text-softBlack mb-6 max-w-[800px]">
-                Software built from <br class="hidden sm:block" /> real business problems.
+            <h1 class="text-balance text-[40px] sm:text-[52px] md:text-[64px] font-extrabold tracking-tighter leading-[1.05] text-softBlack mb-6 max-w-[800px]">
+                Software built from real business problems.
             </h1>
             
             <!-- Subtext -->
-            <p class="text-[16px] sm:text-[18px] text-textGray leading-[1.6] max-w-[550px] mb-10 tracking-[-0.01em]">
-                <span class="font-medium text-softBlack">ironbyte Systems</span> creates practical tools that help businesses manage inventory, assist customers, and run operations with clarity.
+            <p class="text-balance text-[16px] sm:text-[18px] text-textGray leading-relaxed max-w-[600px] mb-10 tracking-tight">
+                <span class="font-semibold text-softBlack">ironbyte Systems</span> creates practical tools that help businesses manage inventory, assist customers, and run operations with total clarity.
             </p>
             
-            <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-2">
+            <!-- Buttons (Inline Flex to prevent 100% width on mobile) -->
+            <div class="flex flex-row flex-wrap items-center justify-center gap-4 w-full px-2">
                 <!-- Primary Button (Dark) -->
-                <a href="#dispatchmate" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-softBlack text-white h-[44px] px-6 rounded-full font-medium text-[14px] hover:bg-[#1a1a1a] transition-all shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] tracking-[-0.01em]">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a href="#dispatchmate" class="flex items-center justify-center gap-2 bg-softBlack text-white h-11 px-6 rounded-full font-medium text-[14px] hover:bg-[#111111] hover:scale-[1.02] transition-all shadow-vercel-button tracking-tight">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                     View DispatchMate
                 </a>
                 
                 <!-- Secondary Button (Light) -->
-                <a href="#contact" class="w-full sm:w-auto flex items-center justify-center bg-white text-softBlack border border-borderGray h-[44px] px-6 rounded-full font-medium text-[14px] hover:bg-softGray transition-all shadow-sm tracking-[-0.01em]">
+                <a href="#contact" class="flex items-center justify-center bg-white text-softBlack border border-borderGray h-11 px-6 rounded-full font-medium text-[14px] hover:bg-softGray hover:shadow-sm hover:scale-[1.02] transition-all tracking-tight">
                     Contact
                 </a>
             </div>
@@ -151,12 +175,17 @@
     </main>
 
     <!-- Footer (Minimalist) -->
-    <footer class="border-t border-borderGray py-8 mt-auto bg-white z-10">
+    <footer class="border-t border-borderGray py-8 mt-auto bg-white z-10 relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[13px] text-textGray tracking-tight">© 2026 ironbyte Systems. All rights reserved.</p>
+            <div class="flex items-center gap-2">
+                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L22 20H2L12 2Z" fill="#666"/>
+                </svg>
+                <p class="text-[13px] text-textGray font-medium tracking-tight">© 2026 ironbyte Systems.</p>
+            </div>
             <div class="flex gap-4">
-                <a href="#" class="text-[13px] text-textGray hover:text-softBlack transition-colors tracking-tight">Privacy</a>
-                <a href="#" class="text-[13px] text-textGray hover:text-softBlack transition-colors tracking-tight">Terms</a>
+                <a href="#" class="text-[13px] text-textGray hover:text-softBlack transition-colors font-medium tracking-tight">Privacy</a>
+                <a href="#" class="text-[13px] text-textGray hover:text-softBlack transition-colors font-medium tracking-tight">Terms</a>
             </div>
         </div>
     </footer>
@@ -172,5 +201,4 @@
     </script>
 </body>
 </html>
-
 
