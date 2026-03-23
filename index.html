@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Google Material Symbols for Hamburger Icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -22,7 +25,7 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        softBlack: '#000000', /* Darkened for higher contrast */
+                        softBlack: '#000000',
                         softGray: '#fafafa',
                         borderGray: '#eaeaea',
                         textGray: '#666666'
@@ -37,11 +40,6 @@
     </script>
 
     <style>
-        /* Modern text balance for perfect headline wrapping */
-        .text-balance {
-            text-wrap: balance;
-        }
-
         /* Extremely subtle, widely spaced grid lines */
         .tech-grid {
             position: absolute;
@@ -82,12 +80,9 @@
     <header class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-borderGray">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
             
-            <!-- Left: Logo -->
+            <!-- Left: Logo (Removed Triangle, Text Only) -->
             <div class="flex items-center gap-2.5 cursor-pointer group">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="group-hover:scale-105 transition-transform duration-300">
-                    <path d="M12 2L22 20H2L12 2Z" fill="#000"/>
-                </svg>
-                <span class="font-bold text-[15px] tracking-tight">ironbyte Systems</span>
+                <span class="font-bold text-[15px] tracking-tight">ironbyte</span>
             </div>
 
             <!-- Right: Desktop Links -->
@@ -100,12 +95,10 @@
                 </a>
             </nav>
 
-            <!-- Mobile Menu Button -->
+            <!-- Mobile Menu Button (Google Icons) -->
             <div class="md:hidden flex items-center gap-4">
-                <button id="mobile-menu-btn" class="p-1 text-softBlack focus:outline-none hover:bg-softGray rounded-md transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
+                <button id="mobile-menu-btn" class="p-1 text-softBlack focus:outline-none hover:bg-softGray rounded-md transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[24px]">menu</span>
                 </button>
             </div>
         </div>
@@ -144,20 +137,23 @@
                 </svg>
             </a>
 
-            <!-- Headline (Adjusted to match Vercel) -->
-            <h1 class="text-balance text-[28px] sm:text-[36px] md:text-[46px] font-bold tracking-tight leading-[1.1] text-softBlack mb-6 max-w-[650px]">
-                Software built from real business problems.
+            <!-- Headline (Reduced bold to semibold, forced breaks) -->
+            <h1 class="text-[28px] sm:text-[36px] md:text-[46px] font-semibold tracking-tight leading-[1.1] text-softBlack mb-6">
+                Software built from real<br>business problems.
             </h1>
             
-            <!-- Subtext -->
-            <p class="text-balance text-[16px] sm:text-[18px] text-textGray leading-relaxed max-w-[550px] mb-10 tracking-tight">
-                <span class="font-semibold text-softBlack">ironbyte Systems</span> creates practical tools that help businesses manage inventory, assist customers, and run operations with total clarity.
+            <!-- Subtext (Forced exact line breaks matching screenshot) -->
+            <p class="text-[16px] sm:text-[18px] text-textGray leading-relaxed mb-10 tracking-tight">
+                <span class="font-semibold text-softBlack">ironbyte Systems</span> creates practical<br>
+                tools that help businesses manage<br>
+                inventory, assist customers, and<br>
+                run operations with total clarity.
             </p>
             
-            <!-- Buttons (Inline Flex to prevent 100% width on mobile) -->
-            <div class="flex flex-row flex-wrap items-center justify-center gap-4 w-full px-2">
+            <!-- Buttons (Stacked vertically with increased padding) -->
+            <div class="flex flex-col items-center justify-center gap-3 w-full max-w-[280px]">
                 <!-- Primary Button (Dark) -->
-                <a href="#dispatchmate" class="flex items-center justify-center gap-2 bg-softBlack text-white h-11 px-6 rounded-full font-medium text-[14px] hover:bg-[#111111] hover:scale-[1.02] transition-all shadow-vercel-button tracking-tight">
+                <a href="#dispatchmate" class="flex items-center justify-center gap-2 bg-softBlack text-white w-full py-4 px-8 rounded-full font-medium text-[15px] hover:bg-[#111111] hover:scale-[1.02] transition-all shadow-vercel-button tracking-tight">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
@@ -165,7 +161,7 @@
                 </a>
                 
                 <!-- Secondary Button (Light) -->
-                <a href="#contact" class="flex items-center justify-center bg-white text-softBlack border border-borderGray h-11 px-6 rounded-full font-medium text-[14px] hover:bg-softGray hover:shadow-sm hover:scale-[1.02] transition-all tracking-tight">
+                <a href="#contact" class="flex items-center justify-center bg-white text-softBlack border border-borderGray w-full py-4 px-8 rounded-full font-medium text-[15px] hover:bg-softGray hover:shadow-sm hover:scale-[1.02] transition-all tracking-tight">
                     Contact
                 </a>
             </div>
@@ -178,9 +174,6 @@
     <footer class="border-t border-borderGray py-8 mt-auto bg-white z-10 relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L22 20H2L12 2Z" fill="#666"/>
-                </svg>
                 <p class="text-[13px] text-textGray font-medium tracking-tight">© 2026 ironbyte Systems.</p>
             </div>
             <div class="flex gap-4">
