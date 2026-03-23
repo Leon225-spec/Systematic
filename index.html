@@ -45,7 +45,7 @@
             position: absolute;
             inset: 0;
             z-index: -10;
-            background-size: 60px 60px; /* Slightly smaller grid */
+            background-size: 60px 60px;
             background-image: 
                 linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
@@ -89,7 +89,6 @@
             <nav class="hidden md:flex items-center gap-6">
                 <a href="#dispatchmate" class="text-[14px] text-textGray hover:text-softBlack transition-colors font-medium">DispatchMate</a>
                 <a href="/about" class="text-[14px] text-textGray hover:text-softBlack transition-colors font-medium">About</a>
-                <!-- Refined smaller header button -->
                 <a href="#contact" class="text-[13px] font-medium bg-white text-softBlack border border-borderGray px-3 py-1.5 rounded-md hover:bg-softGray transition-colors shadow-sm tracking-tight">
                     Contact
                 </a>
@@ -128,7 +127,7 @@
         <section class="flex flex-col items-center justify-center w-full pt-16 pb-24 sm:pt-28 sm:pb-32">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center w-full">
                 
-                <!-- Pill Tag for DispatchMate -->
+                <!-- Pill Tag -->
                 <a href="#dispatchmate" class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-borderGray bg-white shadow-sm mb-8 hover:bg-softGray hover:shadow-md transition-all duration-300 group cursor-pointer">
                     <svg class="w-4 h-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -169,17 +168,15 @@
                         Contact
                     </a>
                 </div>
-                
             </div>
         </section>
 
-        <!-- Problem Section (Now Grouped and Scannable) -->
+        <!-- Problem Section -->
         <section class="w-full py-20 sm:py-32 border-t border-borderGray/50 bg-white/50 backdrop-blur-sm relative z-10">
-            <!-- Left aligned, slightly narrower width -->
-            <div class="max-w-3xl mx-auto px-4 sm:px-6 w-full">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full">
                 
                 <!-- Title & Intro -->
-                <div class="mb-12">
+                <div class="mb-16">
                     <h2 class="text-[24px] sm:text-[32px] font-semibold tracking-tight leading-[1.2] text-softBlack mb-4">
                         Built from real work experience
                     </h2>
@@ -188,56 +185,50 @@
                     </p>
                 </div>
                 
-                <!-- Scannable Points List -->
-                <div class="flex flex-col gap-8 sm:gap-10">
+                <!-- Point Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
                     
                     <!-- Point 1: Operations/Searching -->
-                    <div class="flex gap-4 sm:gap-5 items-start">
-                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-softGray border border-borderGray flex items-center justify-center text-softBlack shadow-sm mt-0.5">
+                    <div class="flex flex-col">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-softGray border border-borderGray flex items-center justify-center text-softBlack shadow-sm mb-5">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                         </div>
-                        <div>
-                            <h3 class="text-[16px] sm:text-[17px] font-semibold text-softBlack tracking-tight mb-1">Relying on memory</h3>
-                            <p class="text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
-                                Staff rely on memory to find products. Warehouses are difficult to navigate, and workers waste time searching for items instead of working efficiently.
-                            </p>
-                        </div>
+                        <h3 class="text-[17px] font-semibold text-softBlack tracking-tight mb-3">Relying on memory</h3>
+                        <p class="text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
+                            Staff rely on memory to find products. Warehouses are difficult to navigate, and workers waste time searching for items instead of working efficiently.
+                        </p>
                     </div>
 
                     <!-- Point 2: Customer Service -->
-                    <div class="flex gap-4 sm:gap-5 items-start">
-                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-softGray border border-borderGray flex items-center justify-center text-softBlack shadow-sm mt-0.5">
+                    <div class="flex flex-col">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-softGray border border-borderGray flex items-center justify-center text-softBlack shadow-sm mb-5">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
                             </svg>
                         </div>
-                        <div>
-                            <h3 class="text-[16px] sm:text-[17px] font-semibold text-softBlack tracking-tight mb-1">Slowed customer service</h3>
-                            <p class="text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
-                                Lack of instant product knowledge slows everything down. Staff spend time asking others for help and trying to understand details while customers wait.
-                            </p>
-                        </div>
+                        <h3 class="text-[17px] font-semibold text-softBlack tracking-tight mb-3">Slowed customer service</h3>
+                        <p class="text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
+                            Lack of instant product knowledge slows everything down. Staff spend time asking others for help and trying to understand details while customers wait.
+                        </p>
                     </div>
 
                     <!-- Point 3: Management Insights -->
-                    <div class="flex gap-4 sm:gap-5 items-start">
-                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-softGray border border-borderGray flex items-center justify-center text-softBlack shadow-sm mt-0.5">
+                    <div class="flex flex-col">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-softGray border border-borderGray flex items-center justify-center text-softBlack shadow-sm mb-5">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="20" x2="18" y2="10"></line>
                                 <line x1="12" y1="20" x2="12" y2="4"></line>
                                 <line x1="6" y1="20" x2="6" y2="14"></line>
                             </svg>
                         </div>
-                        <div>
-                            <h3 class="text-[16px] sm:text-[17px] font-semibold text-softBlack tracking-tight mb-1">Lack of clear insights</h3>
-                            <p class="text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
-                                At the same time, managers fly blind. They lack clear visibility into what products are selling most and what items customers are asking for regularly.
-                            </p>
-                        </div>
+                        <h3 class="text-[17px] font-semibold text-softBlack tracking-tight mb-3">Lack of clear insights</h3>
+                        <p class="text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
+                            At the same time, managers fly blind. They lack clear visibility into what products are selling most and what items customers are asking for regularly.
+                        </p>
                     </div>
 
                 </div>
@@ -271,5 +262,4 @@
     </script>
 </body>
 </html>
-
 
