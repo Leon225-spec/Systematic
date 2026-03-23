@@ -121,62 +121,94 @@
     <div class="tech-grid"></div>
     <div class="ambient-glow"></div>
 
-    <!-- Main Hero Section -->
-    <main class="flex-grow flex flex-col pt-16 pb-24 sm:pt-28 sm:pb-32 overflow-hidden items-center justify-center">
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow flex flex-col overflow-hidden relative z-10">
         
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center relative z-10 w-full">
-            
-            <!-- Pill Tag for DispatchMate -->
-            <a href="#dispatchmate" class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-borderGray bg-white shadow-sm mb-8 hover:bg-softGray hover:shadow-md transition-all duration-300 group cursor-pointer">
-                <!-- Replaced blue dot with a product box icon -->
-                <svg class="w-4 h-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                </svg>
-                <span class="text-[13px] font-medium text-textGray tracking-tight">
-                    Currently building <span class="text-softBlack font-semibold">DispatchMate</span>
-                </span>
-                <svg class="w-3.5 h-3.5 text-textGray group-hover:text-softBlack group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </a>
-
-            <!-- Headline (Loosened tracking & line height, added more bottom margin) -->
-            <h1 class="text-[28px] sm:text-[36px] md:text-[46px] font-semibold tracking-tight leading-[1.15] text-softBlack mb-6">
-                Software built from real<br class="hidden sm:inline"> business problems.
-            </h1>
-            
-            <!-- Subtext (Loosened line height, added more bottom margin) -->
-            <p class="text-[16px] sm:text-[18px] text-textGray leading-[1.6] mb-10">
-                <span class="font-semibold text-softBlack">ironbyte Systems</span> creates practical<br class="hidden sm:inline">
-                tools that help businesses manage<br class="hidden sm:inline">
-                inventory, assist customers, and<br class="hidden sm:inline">
-                run operations with total clarity.
-            </p>
-            
-            <!-- Buttons -->
-            <div class="flex flex-col items-center justify-center gap-4 w-full max-w-[280px]">
-                <!-- Primary Button (Dark) -->
-                <a href="#dispatchmate" class="flex items-center justify-center gap-2 bg-softBlack text-white w-full py-4 px-8 rounded-full font-medium text-[15px] hover:bg-[#111111] hover:scale-[1.02] transition-all shadow-vercel-button tracking-tight">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                    View DispatchMate
-                </a>
+        <!-- Hero Section -->
+        <section class="flex flex-col items-center justify-center w-full pt-16 pb-24 sm:pt-28 sm:pb-32">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center w-full">
                 
-                <!-- Secondary Button (Light) -->
-                <a href="#contact" class="flex items-center justify-center bg-white text-softBlack border border-borderGray w-full py-4 px-8 rounded-full font-medium text-[15px] hover:bg-softGray hover:shadow-sm hover:scale-[1.02] transition-all tracking-tight">
-                    Contact
+                <!-- Pill Tag for DispatchMate -->
+                <a href="#dispatchmate" class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-borderGray bg-white shadow-sm mb-8 hover:bg-softGray hover:shadow-md transition-all duration-300 group cursor-pointer">
+                    <!-- Replaced blue dot with a product box icon -->
+                    <svg class="w-4 h-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span class="text-[13px] font-medium text-textGray tracking-tight">
+                        Currently building <span class="text-softBlack font-semibold">DispatchMate</span>
+                    </span>
+                    <svg class="w-3.5 h-3.5 text-textGray group-hover:text-softBlack group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                 </a>
+
+                <!-- Headline -->
+                <h1 class="text-[28px] sm:text-[36px] md:text-[46px] font-semibold tracking-tight leading-[1.15] text-softBlack mb-6">
+                    Software built from real<br class="hidden sm:inline"> business problems.
+                </h1>
+                
+                <!-- Subtext -->
+                <p class="text-[16px] sm:text-[18px] text-textGray leading-[1.6] mb-10">
+                    <span class="font-semibold text-softBlack">ironbyte Systems</span> creates practical<br class="hidden sm:inline">
+                    tools that help businesses manage<br class="hidden sm:inline">
+                    inventory, assist customers, and<br class="hidden sm:inline">
+                    run operations with total clarity.
+                </p>
+                
+                <!-- Buttons -->
+                <div class="flex flex-col items-center justify-center gap-4 w-full max-w-[280px]">
+                    <!-- Primary Button (Dark) -->
+                    <a href="#dispatchmate" class="flex items-center justify-center gap-2 bg-softBlack text-white w-full py-4 px-8 rounded-full font-medium text-[15px] hover:bg-[#111111] hover:scale-[1.02] transition-all shadow-vercel-button tracking-tight">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                        View DispatchMate
+                    </a>
+                    
+                    <!-- Secondary Button (Light) -->
+                    <a href="#contact" class="flex items-center justify-center bg-white text-softBlack border border-borderGray w-full py-4 px-8 rounded-full font-medium text-[15px] hover:bg-softGray hover:shadow-sm hover:scale-[1.02] transition-all tracking-tight">
+                        Contact
+                    </a>
+                </div>
+                
             </div>
-            
-        </div>
-        
+        </section>
+
+        <!-- Problem Section -->
+        <section class="w-full py-20 sm:py-32 border-t border-borderGray/50 bg-white/50 backdrop-blur-sm relative z-10">
+            <!-- Left aligned, slightly narrower width (max-w-3xl vs max-w-4xl above) -->
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 w-full">
+                
+                <!-- Title -->
+                <h2 class="text-[24px] sm:text-[32px] font-semibold tracking-tight leading-[1.2] text-softBlack mb-8">
+                    Built from real work experience
+                </h2>
+                
+                <!-- Content separated into clean, readable paragraphs -->
+                <div class="flex flex-col gap-6 text-[16px] sm:text-[18px] text-textGray leading-[1.6]">
+                    <p>
+                        In many businesses, daily operations are still manual and disorganized.
+                    </p>
+                    <p>
+                        Staff rely on memory to find products, warehouses are difficult to navigate, and customer service is slowed down by lack of product knowledge.
+                    </p>
+                    <p>
+                        Workers spend time searching for items, asking others for help, and trying to understand product details while customers wait.
+                    </p>
+                    <p>
+                        At the same time, managers lack clear insights into what products are selling most and what customers ask for regularly.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer (Minimalist) -->
-    <footer class="border-t border-borderGray py-8 mt-auto bg-white z-10 relative">
+    <footer class="border-t border-borderGray py-8 mt-auto bg-white z-20 relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
                 <p class="text-[13px] text-textGray font-medium tracking-tight">© 2026 ironbyte Systems.</p>
@@ -199,5 +231,4 @@
     </script>
 </body>
 </html>
-
 
