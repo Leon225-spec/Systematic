@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practical UI Design Clone</title>
+    <title>ironbyte Systems</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,160 +34,111 @@
     </script>
     
     <style>
-        /* Faint grid background from the second screenshot */
+        /* Faint grid background for that structured "systems" feel */
         .bg-grid-pattern {
             background-image: 
                 linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background-size: 32px 32px;
         }
     </style>
 </head>
-<body class="bg-[#fafafa] text-brand-text font-sans antialiased min-h-screen">
+<body class="bg-[#fafafa] text-brand-text font-sans antialiased min-h-screen flex flex-col selection:bg-slate-200 selection:text-slate-900">
 
-    <!-- Container matching mobile viewport proportions -->
-    <main class="max-w-[480px] mx-auto bg-white min-h-screen relative overflow-hidden shadow-2xl sm:my-10 sm:rounded-[40px] border-x border-slate-100 sm:border-y">
-        
-        <!-- Top Bar (Browser mock) -->
-        <div class="h-14 border-b border-slate-100 flex items-center px-4 bg-white sticky top-0 z-10">
-            <svg class="w-5 h-5 text-slate-700 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-            <div class="bg-slate-100 rounded-full flex-1 h-9 flex items-center px-4">
-                <svg class="w-3.5 h-3.5 text-slate-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                <span class="text-sm text-slate-700 font-medium">practical-ui.com</span>
-            </div>
-            <div class="flex items-center gap-3 ml-4 text-slate-700">
-                <span class="text-xs font-bold border border-slate-400 rounded px-1.5 py-0.5">66</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
-            </div>
+    <!-- Navbar -->
+    <header class="fixed top-0 inset-x-0 bg-white/80 backdrop-blur-md z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <!-- Left: Logo -->
+            <a href="/" class="flex items-center gap-2 group">
+                <div class="w-7 h-7 bg-[#111827] rounded-lg flex items-center justify-center shadow-icon group-hover:scale-105 transition-transform">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <span class="text-lg font-bold text-[#111827] tracking-tight">ironbyte<span class="text-slate-500 font-medium"> Systems</span></span>
+            </a>
+
+            <!-- Right: Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#dispatchmate" class="text-[15px] font-medium text-slate-600 hover:text-[#111827] transition-colors">DispatchMate</a>
+                <a href="/about" class="text-[15px] font-medium text-slate-600 hover:text-[#111827] transition-colors">About</a>
+                <a href="#contact" class="text-[15px] font-medium text-slate-600 hover:text-[#111827] transition-colors">Contact</a>
+                
+                <!-- CTA Button -->
+                <a href="#get-started" class="ml-2 bg-white border border-slate-200 text-[#111827] px-4 py-2 rounded-full text-[14px] font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
+                    Client Login
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
         </div>
 
-        <!-- Section 1: Typography & Spacing (Screenshot 1) -->
-        <section class="pt-16 pb-12 px-6">
-            <p class="text-[11px] font-bold tracking-[0.15em] text-slate-500 uppercase mb-4">Visual Examples</p>
-            <h1 class="text-[34px] font-extrabold text-[#111827] leading-[1.15] tracking-tight mb-7">
-                A picture is worth a thousand words
+        <!-- Mobile Menu Dropdown (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-6 py-4 space-y-4 shadow-soft">
+            <a href="#dispatchmate" class="block text-[16px] font-medium text-slate-600">DispatchMate</a>
+            <a href="/about" class="block text-[16px] font-medium text-slate-600">About</a>
+            <a href="#contact" class="block text-[16px] font-medium text-slate-600">Contact</a>
+            <a href="#get-started" class="block mt-4 w-full text-center bg-[#111827] text-white px-4 py-3 rounded-xl text-[15px] font-semibold">
+                Client Login
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main class="flex-grow flex items-center relative pt-16">
+        <!-- Subtle Background Grid -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.45] pointer-events-none" style="mask-image: radial-gradient(ellipse at center top, black 20%, transparent 70%);"></div>
+
+        <section class="w-full max-w-4xl mx-auto px-6 py-20 md:py-32 text-center relative z-10 flex flex-col items-center">
+            
+            <!-- Headline -->
+            <h1 class="text-[40px] sm:text-[52px] md:text-[64px] font-extrabold text-[#111827] leading-[1.1] tracking-tight mb-8">
+                Software built from <br class="hidden sm:block"/> real business problems.
             </h1>
             
-            <p class="text-[20px] text-[#475569] leading-[1.6] mb-8 font-normal">
-                Over 300 pixel-perfect visual examples to help clearly and quickly demonstrate key concepts.
+            <!-- Primary Subtext -->
+            <p class="text-[18px] md:text-[21px] text-[#475569] leading-[1.6] max-w-2xl mb-12">
+                <span class="font-semibold text-slate-700">ironbyte Systems</span> creates practical tools that help businesses manage inventory, assist customers, and run operations with total clarity.
             </p>
-            
-            <p class="text-[17px] text-[#475569] leading-[1.65] mb-8">
-                This book doesn't just tell you how to design interfaces, it shows you. Packed with visual examples, you'll gain years of design experience in a matter of hours.
-            </p>
-            
-            <p class="text-[15px] text-[#64748b] leading-[1.6]">
-                All visual examples in the book were created using the <a href="#" class="text-[#2563eb] underline decoration-[#bfdbfe] decoration-2 underline-offset-[5px] hover:decoration-[#2563eb] transition-colors duration-200">Figma design system</a>.
-            </p>
-        </section>
 
-        <!-- Divider -->
-        <div class="h-px bg-slate-100 mx-6"></div>
-
-        <!-- Section 2: Features & Icons (Screenshot 2) -->
-        <section class="py-14 px-6 relative">
-            <!-- Subtle Grid Background -->
-            <div class="absolute top-0 right-0 w-48 h-48 bg-grid-pattern opacity-60 pointer-events-none" style="mask-image: radial-gradient(circle at top right, black, transparent);"></div>
-            
-            <div class="space-y-12 relative z-10">
-                <!-- Feature 1 -->
-                <div>
-                    <!-- The specific icon container style: white, soft shadow, subtle border -->
-                    <div class="w-[60px] h-[60px] rounded-full bg-white border border-slate-100 flex items-center justify-center shadow-icon mb-6 ring-[6px] ring-slate-50/50">
-                        <svg class="w-6 h-6 text-[#3b82f6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-[21px] font-bold text-[#111827] leading-[1.3] tracking-tight mb-3">
-                        Gain years of design experience in a matter of hours.
-                    </h3>
-                    <p class="text-[17px] text-[#475569] leading-[1.65]">
-                        A whole UI design course squeezed into a quick and easy read, packed with actionable guidelines and examples.
-                    </p>
+            <!-- Secondary Subtext (Smooth Card Callout) -->
+            <div class="bg-white border border-slate-100 shadow-soft rounded-2xl p-2 pl-2 pr-6 flex items-center gap-4 max-w-xl mx-auto mb-14 text-left ring-[4px] ring-white/50">
+                <div class="w-12 h-12 shrink-0 bg-[#f8fafc] rounded-xl flex items-center justify-center border border-slate-100">
+                    <!-- Icon representing DispatchMate -->
+                    <svg class="w-6 h-6 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
                 </div>
-
-                <!-- Feature 2 -->
-                <div>
-                    <div class="w-[60px] h-[60px] rounded-full bg-white border border-slate-100 flex items-center justify-center shadow-icon mb-6 ring-[6px] ring-slate-50/50">
-                        <svg class="w-6 h-6 text-[#3b82f6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-[21px] font-bold text-[#111827] leading-[1.3] tracking-tight mb-3">
-                        Use a system of logical guidelines, rather than just gut feeling.
-                    </h3>
-                    <p class="text-[17px] text-[#475569] leading-[1.65]">
-                        Interface design might appear to be a magical art form, but a lot of it is made up from logical guidelines.
-                    </p>
-                </div>
+                <p class="text-[15px] text-[#475569] leading-[1.5]">
+                    Currently building <strong class="text-[#111827]">DispatchMate</strong> — a smart assistant for warehouse and shop operations.
+                </p>
             </div>
-        </section>
 
-        <!-- Section 3: Smooth Cards (Screenshot 3) -->
-        <section class="py-12 px-5 bg-[#fafafa]">
-            <div class="space-y-4">
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                <!-- Primary Button (Black Background) -->
+                <a href="#dispatchmate" class="w-full sm:w-auto bg-[#111827] text-white px-8 py-4 rounded-full text-[16px] font-semibold hover:bg-slate-800 transition-all shadow-icon hover:shadow-lg flex items-center justify-center gap-2">
+                    View DispatchMate
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
                 
-                <!-- Card 1 -->
-                <div class="bg-white rounded-[20px] p-6 border border-slate-100 shadow-soft">
-                    <div class="flex items-center gap-3.5 mb-4">
-                        <img src="https://i.pravatar.cc/150?img=44" alt="Molly Hellmuth" class="w-[46px] h-[46px] rounded-full object-cover">
-                        <div>
-                            <h4 class="text-[16px] font-semibold text-[#111827] leading-tight">Molly Hellmuth</h4>
-                            <p class="text-[14px] text-slate-500 mt-0.5">Product designer at ...</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Stars -->
-                    <div class="flex gap-[2px] mb-4">
-                        <!-- Repeated star icon -->
-                        <svg class="w-5 h-5 text-[#facc15]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-[#facc15]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-[#facc15]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-[#facc15]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-[#facc15]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    </div>
-                    
-                    <p class="text-[16px] text-[#475569] leading-[1.6]">
-                        Adham does an amazing job breaking down complex topics into easy-to-understand lessons. It's a great resource for anyone looking to improve their designs.
-                    </p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white rounded-[20px] p-6 border border-slate-100 shadow-soft relative">
-                    <!-- X / Twitter Icon -->
-                    <svg class="absolute top-6 right-6 w-[18px] h-[18px] text-slate-900" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                    
-                    <div class="flex items-center gap-3.5 mb-5">
-                        <img src="https://i.pravatar.cc/150?img=11" alt="UI Adrian" class="w-[46px] h-[46px] rounded-full object-cover">
-                        <div>
-                            <h4 class="text-[16px] font-semibold text-[#111827] leading-tight">UI Adrian</h4>
-                            <p class="text-[14px] text-[#2563eb] mt-0.5 underline decoration-[#bfdbfe] underline-offset-2">@uiuxadrian</p>
-                        </div>
-                    </div>
-                    
-                    <p class="text-[16px] text-[#475569] leading-[1.6]">
-                        Got Practical UI when it launched :) I've been Adham's followers for a few years now, good lad.
-                    </p>
-                </div>
-
-                <!-- Card 3 (Partial) -->
-                <div class="bg-white rounded-[20px] p-6 border border-slate-100 shadow-soft">
-                    <div class="flex items-center gap-3.5">
-                        <img src="https://i.pravatar.cc/150?img=8" alt="Jordan Hughes" class="w-[46px] h-[46px] rounded-full object-cover">
-                        <div>
-                            <h4 class="text-[16px] font-semibold text-[#111827] leading-tight">Jordan Hughes</h4>
-                            <p class="text-[14px] text-slate-500 mt-0.5">Product designer at ...</p>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Secondary Button (Bordered) -->
+                <a href="#contact" class="w-full sm:w-auto bg-white text-[#111827] border border-slate-200 px-8 py-4 rounded-full text-[16px] font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
+                    Contact Us
+                </a>
             </div>
-        </section>
 
+        </section>
     </main>
 
+    <!-- Simple script for mobile menu toggle -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
 
