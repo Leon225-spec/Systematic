@@ -1,162 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ironbyte Systems</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config to match Vercel's aesthetic -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        softBlack: '#111111',
+                        softGray: '#FAFAFA',
+                        borderGray: '#EAEAEA',
+                        textGray: '#666666'
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tight: '-0.02em',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            /* Prevents scrollbar jumping */
-            overflow-y: scroll; 
+        /* The techy grid background with a fade-out effect at the bottom */
+        .tech-grid {
+            position: absolute;
+            inset: 0;
+            z-index: -10;
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            /* Mask to fade out the grid as it goes down */
+            -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+            mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
         }
 
-        /* Custom typography utilities for a premium feel */
-        .tracking-ultra-tight { letter-spacing: -0.05em; }
-        .text-balance { text-wrap: balance; }
-
-        /* Smooth entrance animations */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-up {
-            animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0; /* Start hidden */
-        }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-
-        /* Mobile Menu Transitions */
-        #mobileMenu {
-            transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-            transform-origin: top;
-        }
-        #mobileMenu.hidden-menu {
-            opacity: 0;
-            transform: scaleY(0.95);
+        /* Subtle glow blob for that modern cloud feel */
+        .glow-blob {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, rgba(255,255,255,0) 70%);
+            z-index: -9;
             pointer-events: none;
         }
-        #mobileMenu.active-menu {
-            opacity: 1;
-            transform: scaleY(1);
-            pointer-events: auto;
+
+        /* Custom selection color */
+        ::selection {
+            background-color: #111;
+            color: white;
         }
     </style>
 </head>
-<body class="text-[#0a0a0a] antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
+<body class="bg-white text-softBlack font-sans antialiased relative min-h-screen flex flex-col">
 
-    <!-- Header / Navigation -->
-    <header class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-gray-100">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-1.5 text-xl tracking-tight z-50">
-                <span class="font-bold text-black">ironbyte</span>
-                <span class="font-normal text-gray-400">Systems</span>
-            </a>
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 border-b border-borderGray">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+            
+            <!-- Left: Logo -->
+            <div class="flex items-center gap-2 cursor-pointer">
+                <!-- Simple Triangle Logo akin to the aesthetic -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L22 20H2L12 2Z" fill="#111111"/>
+                </svg>
+                <span class="font-bold text-lg tracking-tight">ironbyte Systems</span>
+            </div>
 
-            <!-- Desktop Nav (Hidden on Mobile) -->
-            <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-gray-500">
-                <a href="#" class="hover:text-black transition-colors">DispatchMate</a>
-                <a href="#" class="hover:text-black transition-colors">About</a>
-                <a href="#" class="hover:text-black transition-colors">Contact</a>
-                <a href="#" class="text-black flex items-center gap-1.5 hover:opacity-70 transition-opacity">
-                    Client Login <span aria-hidden="true" class="text-gray-400">&rarr;</span>
+            <!-- Right: Desktop Links -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#dispatchmate" class="text-sm font-medium text-textGray hover:text-softBlack transition-colors">DispatchMate</a>
+                <a href="/about" class="text-sm font-medium text-textGray hover:text-softBlack transition-colors">About</a>
+                <!-- CTA Button in Nav -->
+                <a href="#contact" class="text-sm font-medium bg-softBlack text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors border border-transparent">
+                    Contact
                 </a>
             </nav>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="menuBtn" class="md:hidden p-2 -mr-2 text-black z-50 focus:outline-none" aria-label="Toggle menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center gap-4">
+                <button id="mobile-menu-btn" class="p-2 -mr-2 text-softBlack focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobileMenu" class="absolute top-0 left-0 w-full h-screen bg-white pt-20 px-6 hidden-menu md:hidden">
-            <div class="flex flex-col gap-6 text-2xl font-semibold tracking-tight">
-                <a href="#" class="text-black block pb-4 border-b border-gray-100">DispatchMate</a>
-                <a href="#" class="text-gray-400 hover:text-black transition-colors block pb-4 border-b border-gray-100">About</a>
-                <a href="#" class="text-gray-400 hover:text-black transition-colors block pb-4 border-b border-gray-100">Contact</a>
-                <a href="#" class="text-black block pt-2 flex items-center justify-between">
-                    Client Login <span class="text-gray-300">&rarr;</span>
-                </a>
+        <!-- Mobile Menu Dropdown (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white border-b border-borderGray shadow-lg">
+            <div class="px-4 py-6 flex flex-col gap-4">
+                <a href="#dispatchmate" class="text-base font-medium text-textGray hover:text-softBlack">DispatchMate</a>
+                <a href="/about" class="text-base font-medium text-textGray hover:text-softBlack">About</a>
+                <div class="pt-4 mt-2 border-t border-borderGray">
+                    <a href="#contact" class="block text-center w-full text-base font-medium bg-softBlack text-white px-4 py-3 rounded-full hover:bg-gray-800 transition-colors">
+                        Contact Us
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
+    <!-- Background Elements -->
+    <div class="tech-grid"></div>
+    <div class="glow-blob"></div>
+
     <!-- Main Hero Section -->
-    <main class="flex-grow flex flex-col items-center justify-center pt-32 pb-24 px-6 text-center">
-        <div class="max-w-3xl mx-auto flex flex-col items-center w-full">
-
-            <!-- Status Badge -->
-            <div class="animate-fade-up inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-gray-200 bg-gray-50/50 mb-8">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-gray-800"></span>
-                </span>
-                <span class="text-[11px] font-semibold text-gray-500 tracking-wider uppercase">
-                    Currently building <span class="text-gray-900 ml-1">DispatchMate</span>
-                </span>
-            </div>
-
+    <main class="flex-grow flex flex-col justify-center relative pt-20 pb-32 sm:pt-32 sm:pb-40 overflow-hidden">
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            
             <!-- Headline -->
-            <h1 class="animate-fade-up delay-100 text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.05] font-extrabold tracking-ultra-tight text-[#050505] mb-6 text-balance">
-                Software built<br class="hidden sm:block"> from real business problems.
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter leading-[1.1] mb-8 text-softBlack">
+                Software built from <br class="hidden sm:block" /> real business problems.
             </h1>
-
-            <!-- Subheadline -->
-            <p class="animate-fade-up delay-200 text-[1.1rem] sm:text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed mb-10 text-balance">
-                <strong class="text-gray-900 font-medium">ironbyte Systems</strong> creates practical tools that help businesses manage inventory, assist customers, and run operations with total clarity.
+            
+            <!-- Subtext -->
+            <p class="text-lg sm:text-xl text-textGray leading-relaxed max-w-2xl mx-auto mb-10">
+                <strong class="text-softBlack font-semibold">ironbyte Systems</strong> creates practical tools that help businesses manage inventory, assist customers, and run operations with clarity. 
+                <span class="block mt-4">
+                    Currently building <span class="text-softBlack font-medium">DispatchMate</span> — a smart assistant for warehouse and shop operations.
+                </span>
             </p>
-
-            <!-- Call to Action Buttons -->
-            <div class="animate-fade-up delay-300 w-full flex flex-col sm:flex-row items-center justify-center gap-3.5">
-                <a href="#" class="w-full sm:w-[220px] px-6 py-3.5 rounded-full bg-[#0a0a0a] text-white text-[15px] font-medium hover:bg-black hover:scale-[1.02] hover:shadow-lg hover:shadow-gray-200 transition-all duration-200 flex items-center justify-center">
+            
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <!-- Primary Button (Black) -->
+                <a href="#dispatchmate" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-softBlack text-white px-8 py-3.5 rounded-full font-medium text-base hover:bg-gray-800 hover:scale-[1.02] transition-all shadow-sm">
                     View DispatchMate
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
                 </a>
-                <a href="#" class="w-full sm:w-[220px] px-6 py-3.5 rounded-full bg-white text-[#0a0a0a] text-[15px] font-medium border border-gray-200 hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 flex items-center justify-center">
-                    Contact Us
+                
+                <!-- Secondary Button (Bordered) -->
+                <a href="#contact" class="w-full sm:w-auto flex items-center justify-center bg-white text-softBlack border border-borderGray px-8 py-3.5 rounded-full font-medium text-base hover:bg-softGray hover:border-gray-300 transition-all shadow-sm">
+                    Contact
                 </a>
             </div>
-
+            
         </div>
+        
     </main>
 
-    <!-- Simple JS for Mobile Menu Toggle -->
-    <script>
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
-        let isMenuOpen = false;
+    <!-- Footer (Minimalist) -->
+    <footer class="border-t border-borderGray py-8 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-textGray">© 2026 ironbyte Systems. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="text-sm text-textGray hover:text-softBlack transition-colors">Privacy</a>
+                <a href="#" class="text-sm text-textGray hover:text-softBlack transition-colors">Terms</a>
+            </div>
+        </div>
+    </footer>
 
-        menuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            
-            if (isMenuOpen) {
-                // Open menu
-                mobileMenu.classList.remove('hidden-menu');
-                mobileMenu.classList.add('active-menu');
-                // Change icon to close (X)
-                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
-                // Prevent scrolling on body
-                document.body.style.overflow = 'hidden';
-            } else {
-                // Close menu
-                mobileMenu.classList.remove('active-menu');
-                mobileMenu.classList.add('hidden-menu');
-                // Change icon back to hamburger
-                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-                // Restore scrolling
-                document.body.style.overflow = 'auto';
-            }
+    <!-- Simple Script for Mobile Menu Toggle -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
         });
     </script>
 </body>
