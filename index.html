@@ -321,6 +321,44 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
+        <section id="contact" class="w-full py-20 sm:py-32 border-t border-borderGray/50 bg-white/50 backdrop-blur-sm relative z-10">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-start">
+                    
+                    <!-- Text Area -->
+                    <div>
+                        <h2 class="text-[24px] sm:text-[32px] font-semibold tracking-tight leading-[1.2] text-softBlack mb-4">
+                            Let’s work together
+                        </h2>
+                        <p class="text-[16px] sm:text-[18px] text-textGray leading-[1.6]">
+                            Interested in DispatchMate or working with ironbyte Systems? Get in touch.
+                        </p>
+                    </div>
+
+                    <!-- Form Area -->
+                    <form class="flex flex-col gap-4">
+                        <div>
+                            <label for="name" class="sr-only">Name</label>
+                            <input type="text" id="name" placeholder="Name" class="w-full px-4 py-3 rounded-lg border border-borderGray bg-white focus:outline-none focus:ring-2 focus:ring-softBlack/10 focus:border-gray-400 transition-all text-[15px] placeholder:text-gray-400 text-softBlack shadow-sm">
+                        </div>
+                        <div>
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" id="email" placeholder="Email" class="w-full px-4 py-3 rounded-lg border border-borderGray bg-white focus:outline-none focus:ring-2 focus:ring-softBlack/10 focus:border-gray-400 transition-all text-[15px] placeholder:text-gray-400 text-softBlack shadow-sm">
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only">Message</label>
+                            <textarea id="message" rows="4" placeholder="Message" class="w-full px-4 py-3 rounded-lg border border-borderGray bg-white focus:outline-none focus:ring-2 focus:ring-softBlack/10 focus:border-gray-400 transition-all text-[15px] placeholder:text-gray-400 text-softBlack shadow-sm resize-y"></textarea>
+                        </div>
+                        <button type="submit" class="w-full sm:w-auto self-start mt-2 bg-softBlack text-white py-3 px-8 rounded-lg font-medium text-[15px] hover:bg-[#111111] hover:scale-[1.02] transition-all shadow-vercel-button tracking-tight">
+                            Send Message
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -330,8 +368,8 @@
                 <p class="text-[13px] text-textGray font-medium tracking-tight">© 2026 ironbyte Systems.</p>
             </div>
             <div class="flex gap-4">
-                <a href="#" class="text-[13px] text-textGray hover:text-softBlack transition-colors font-medium tracking-tight">Privacy</a>
-                <a href="#" class="text-[13px] text-textGray hover:text-softBlack transition-colors font-medium tracking-tight">Terms</a>
+                <a href="/about" class="text-[13px] text-textGray hover:text-softBlack transition-colors font-medium tracking-tight">About</a>
+                <a href="#contact" class="text-[13px] text-textGray hover:text-softBlack transition-colors font-medium tracking-tight">Contact</a>
             </div>
         </div>
     </footer>
@@ -347,4 +385,5 @@
     </script>
 </body>
 </html>
+
 
