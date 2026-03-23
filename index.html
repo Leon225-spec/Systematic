@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ironbyte</title>
+    <title>ironbyte Systems</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -17,94 +17,107 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        zinc: {
-                            50: '#fafafa',
-                            100: '#f4f4f5',
-                            200: '#e4e4e7',
-                            300: '#d4d4d8',
-                            400: '#a1a1aa',
-                            500: '#71717a',
-                            600: '#52525b',
-                            700: '#3f3f46',
-                            800: '#27272a',
-                            900: '#18181b',
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
                         }
                     }
                 }
             }
         }
     </script>
+    
+    <style>
+        /* Extremely faint grid to keep a structured feel, but much softer than before */
+        .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(15, 23, 42, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
 </head>
-<body class="bg-[#fafafa] text-zinc-900 font-sans antialiased min-h-screen flex flex-col selection:bg-zinc-200 selection:text-zinc-900">
+<body class="bg-white text-slate-600 font-sans antialiased min-h-screen flex flex-col selection:bg-slate-200 selection:text-slate-900">
 
     <!-- Navbar -->
-    <header class="fixed top-0 inset-x-0 bg-[#fafafa]/80 backdrop-blur-md z-50">
-        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+    <header class="fixed top-0 inset-x-0 bg-white/90 backdrop-blur-md z-50 border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
             <!-- Left: Simple Wordmark Logo -->
-            <a href="/" class="text-xl font-medium tracking-tight text-zinc-900 hover:text-zinc-600 transition-colors">
-                ironbyte
+            <a href="/" class="flex items-center gap-1 group">
+                <span class="text-[20px] font-bold text-slate-900 tracking-tight">ironbyte</span>
+                <span class="text-[20px] font-normal text-slate-400 tracking-tight">Systems</span>
             </a>
 
             <!-- Right: Desktop Navigation -->
             <nav class="hidden md:flex items-center gap-8">
-                <a href="#dispatchmate" class="text-[14px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">DispatchMate</a>
-                <a href="/about" class="text-[14px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">About</a>
-                <a href="#contact" class="text-[14px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Contact</a>
+                <a href="#dispatchmate" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">DispatchMate</a>
+                <a href="/about" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">About</a>
+                <a href="#contact" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Contact</a>
                 
-                <!-- CTA Text Link instead of bulky button -->
-                <a href="#login" class="text-[14px] font-medium text-zinc-900 hover:text-zinc-600 transition-colors">
-                    Client Login
+                <!-- Client Login Link (Minimal) -->
+                <a href="#login" class="ml-4 text-sm font-semibold text-slate-900 hover:text-slate-600 transition-colors">
+                    Client Login &rarr;
                 </a>
             </nav>
 
             <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 -mr-2 text-zinc-900 transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <button id="mobile-menu-btn" class="md:hidden p-2 -mr-2 text-slate-500 hover:text-slate-900 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-zinc-100 px-6 py-6 space-y-6 shadow-sm">
-            <a href="#dispatchmate" class="block text-[15px] font-medium text-zinc-600">DispatchMate</a>
-            <a href="/about" class="block text-[15px] font-medium text-zinc-600">About</a>
-            <a href="#contact" class="block text-[15px] font-medium text-zinc-600">Contact</a>
-            <a href="#login" class="block text-[15px] font-medium text-zinc-900 pt-2 border-t border-zinc-100">
-                Client Login
-            </a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-6 py-4 space-y-4">
+            <a href="#dispatchmate" class="block text-base font-medium text-slate-600">DispatchMate</a>
+            <a href="/about" class="block text-base font-medium text-slate-600">About</a>
+            <a href="#contact" class="block text-base font-medium text-slate-600">Contact</a>
+            <a href="#login" class="block pt-2 text-base font-semibold text-slate-900">Client Login &rarr;</a>
         </div>
     </header>
 
     <!-- Main Hero Section -->
-    <main class="flex-grow flex items-center justify-center relative pt-20">
-        <!-- Extremely subtle radial background gradient to focus attention -->
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-[#fafafa] to-[#fafafa] -z-10"></div>
+    <main class="flex-grow flex flex-col justify-center relative pt-24 pb-16">
+        <!-- Subtle Background Grid -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-100 pointer-events-none" style="mask-image: radial-gradient(ellipse at center top, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse at center top, black 10%, transparent 60%);"></div>
 
-        <section class="w-full max-w-3xl mx-auto px-6 py-24 md:py-32 text-center flex flex-col items-center">
+        <section class="w-full max-w-3xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
             
-            <!-- Simplified DispatchMate Pill Tag -->
-            <a href="#dispatchmate" class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-zinc-200/80 bg-white shadow-sm text-[13px] font-medium text-zinc-600 mb-10 hover:border-zinc-300 transition-colors">
-                <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 animate-pulse"></span>
-                Currently building DispatchMate
-                <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <!-- Small Pill Tag for DispatchMate -->
+            <a href="#dispatchmate" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-[13px] font-medium text-slate-600 mb-8 hover:bg-slate-100 transition-colors cursor-pointer group">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-slate-600"></span>
+                </span>
+                Currently building <span class="text-slate-900 font-semibold group-hover:underline decoration-slate-300 underline-offset-2">DispatchMate</span>
             </a>
             
-            <!-- Smoothed, Tightly Spaced Headline -->
-            <!-- Reduced weight (font-medium instead of extrabold), tighter tracking, better line height -->
-            <h1 class="text-[40px] sm:text-[48px] md:text-[56px] font-medium text-zinc-900 leading-[1.1] tracking-tighter mb-6">
-                Software built from <br class="hidden sm:block"/> real business problems.
+            <!-- Headline (Smoother, less bold, tightly tracked) -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-slate-900 leading-[1.15] tracking-tight mb-6">
+                Software built from real business problems.
             </h1>
             
-            <!-- Cleaner Subtext -->
-            <p class="text-[16px] md:text-[18px] text-zinc-500 leading-relaxed max-w-xl mb-12">
-                <span class="font-medium text-zinc-700">ironbyte</span> creates practical tools that help businesses manage inventory, assist customers, and run operations with total clarity.
+            <!-- Primary Subtext (Better line height and readability) -->
+            <p class="text-lg sm:text-[20px] text-slate-500 leading-relaxed max-w-2xl mx-auto mb-10">
+                <span class="font-medium text-slate-700">ironbyte Systems</span> creates practical tools that help businesses manage inventory, assist customers, and run operations with total clarity.
             </p>
 
-            <!-- Buttons: Smooth, minimal, strictly black & white -->
+            <!-- Clean, Simple Buttons -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
-                <a href="#dispatchmate" class="w-full sm:w-auto bg-zinc-900 text-white px-7 py-3 rounded-full text-[14px] font-medium hover:bg-zinc-800 transition-all shadow-sm">
+                <!-- Primary Button (Deep Black) -->
+                <a href="#dispatchmate" class="w-full sm:w-auto bg-slate-900 text-white px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
                     View DispatchMate
                 </a>
-                <a href="#contact" class="w-full sm:w-auto bg-white text-zinc-900 border border-zinc-200 px-7 py-3 rounded-full text-[14px] font-medium hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-sm">
+                
+                <!-- Secondary Button (Minimal Border) -->
+                <a href="#contact" class="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-slate-50 hover:border-slate-300 transition-colors">
                     Contact Us
                 </a>
             </div>
@@ -113,6 +126,7 @@
     </main>
 
     <script>
+        // Mobile menu toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
